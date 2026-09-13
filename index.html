@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AbujaCar — Our Services | Luxury Automotive Solutions</title>
+  <title>Abuja Cars — Our Services | Luxury Automotive Solutions</title>
   <link rel="icon" type="image/x-icon" href="logo.jpeg">
-  <meta name="description" content="AbujaCar Services: vehicle acquisition, consignment, trade-in, fleet management. Premium automotive solutions in Abuja." />
-  <link rel="canonical" href="https://AbujaCar.com/services.html" />
-  <meta property="og:title" content="AbujaCar — Services" />
+  <meta name="description" content="Abuja Cars Services: vehicle acquisition, consignment, trade-in, fleet management. Premium automotive solutions in Abuja." />
+  <link rel="canonical" href="https://abujacars.com/services.html" />
+  <meta property="og:title" content="Abuja Cars — Services" />
   <meta property="og:description" content="Comprehensive automotive services from acquisition to fleet management." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://AbujaCar.com/services.html" />
+  <meta property="og:url" content="https://abujacars.com/services.html" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -114,7 +114,7 @@
       position: relative;
     }
     .hero-fallback::after {
-      content: 'AbujaCar';
+      content: 'ABUJA CARS';
       position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
       font-size: clamp(40px, 10vw, 120px); font-weight: 800; letter-spacing: 0.2em;
       color: rgba(255,255,255,0.03); font-family: 'Inter', sans-serif;
@@ -127,6 +127,15 @@
       margin-bottom: 1rem;
     }
     .service-icon svg { width: 28px; height: 28px; stroke: #0066FF; }
+    .brand-grid-item { min-height: 240px; }
+    .brand-grid-item .brand-img { width: 100%; height: 100%; min-height: 240px; object-fit: cover; transition: transform .6s cubic-bezier(.16,1,.3,1), filter .4s ease; }
+    .brand-grid-item:hover .brand-img { transform: scale(1.06); }
+    .brand-grid-item .brand-text { position: relative; z-index: 1; color: #fff; }
+    summary { list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+    }
     @media (max-width: 640px) {
       .service-icon { width: 48px; height: 48px; }
       .service-icon svg { width: 22px; height: 22px; }
@@ -141,7 +150,7 @@
     <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
       <div class="flex items-center gap-2.5">
         <div class="w-8 h-8 rounded-full overflow-hidden p-0.5 bg-black/40 border border-white/20">
-          <img src="logo.jpeg" alt="AbujaCar" class="w-full h-full object-cover rounded-full" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'text-white text-xs font-bold\'>AC</span>'"/>
+          <img src="logo.jpeg" alt="Abuja Cars" class="w-full h-full object-cover rounded-full" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'text-white text-xs font-bold\'>AC</span>'"/>
         </div>
         <span class="text-white font-extrabold text-xs tracking-[0.2em] uppercase">ABUJA<span class="text-gray-400 font-light">CARS</span></span>
       </div>
@@ -160,6 +169,8 @@
         <div id="mobileServicesDropdown" class="pl-4 mt-1 space-y-0.5 border-l-2 border-porsche-accent/30 ml-3">
           <a href="acquire-vehicle.html" class="block text-gray-500 hover:text-white text-xs py-2.5 px-3 rounded-lg hover:bg-white/5 transition">Acquire Vehicle</a>
           <a href="consign-vehicle.html" class="block text-gray-500 hover:text-white text-xs py-2.5 px-3 rounded-lg hover:bg-white/5 transition">Consign Vehicle</a>
+          <a href="THYILIEER.html" class="block text-gray-500 hover:text-white text-xs py-2.5 px-3 rounded-lg hover:bg-white/5 transition">THYILIEER -  Repairs • Servicing • OEM Parts
+Diagnostics </a>
         </div>
       </div>
       <a href="about.html" class="text-gray-400 hover:text-white font-medium text-sm py-3 px-3 rounded-xl hover:bg-white/5 transition">About Us</a>
@@ -170,11 +181,11 @@
   </div>
 
   <!-- HEADER (simplified hero) -->
-  <header class="relative w-full min-h-[85vh] bg-porsche-black flex flex-col justify-between overflow-hidden">
+  <header class="relative w-full min-h-screen bg-porsche-black flex flex-col justify-between overflow-hidden">
     <div class="absolute inset-0 z-0 w-full h-full hero-fallback">
       <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-50 contrast-110" poster="P (19).jpg">
         <source src="P (1).mp4" type="video/mp4">
-        <img src="P (19).jpg" alt="AbujaCar Services" class="w-full h-full object-cover" onerror="this.style.display='none'"/>
+        <img src="P (19).jpg" alt="Abuja Cars Services" class="w-full h-full object-cover" onerror="this.style.display='none'"/>
       </video>
       <div class="absolute inset-0 bg-gradient-to-b from-porsche-black/95 via-porsche-black/60 to-porsche-black/90"></div>
     </div>
@@ -184,10 +195,10 @@
       <nav class="max-w-7xl mx-auto porsche-glass rounded-full px-3 sm:px-6 py-2 sm:py-3.5 flex items-center justify-between opacity-0 animate-[fadeIn_1.2s_ease-out_0.2s_forwards]">
         <a href="index.html" class="flex items-center gap-2 sm:gap-3.5 group flex-shrink-0">
           <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-full overflow-hidden p-0.5 bg-black/40 border border-white/20 group-hover:border-porsche-accent transition-colors flex items-center justify-center">
-            <img src="logo.jpeg" alt="AbujaCar" class="w-full h-full object-cover rounded-full" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'text-white text-xs sm:text-sm font-bold\'>Ac</span>'"/>
+            <img src="logo.jpeg" alt="Abuja Cars" class="w-full h-full object-cover rounded-full" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'text-white text-xs sm:text-sm font-bold\'>Ac</span>'"/>
           </div>
           <span class="font-light text-[10px] sm:text-sm tracking-[0.1em] sm:tracking-[0.2em] text-white uppercase whitespace-nowrap">
-            <span class="text-gray-500 font-extralight">AbujaCar </span>
+            Abuja<span class="text-gray-500 font-extralight">cars</span>
           </span>
         </a>
         <ul class="hidden lg:flex items-center space-x-10 text-xs font-light uppercase tracking-[0.2em] text-gray-400">
@@ -199,14 +210,14 @@
               <svg class="w-3 h-3 text-gray-400 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
             <div class="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-56 porsche-glass rounded-2xl p-2 hidden group-hover:block transition-all border border-white/10 shadow-2xl">
-              <a href="Lamborghini.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Lamborghini</a>
-              <a href="Tesla.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Tesla</a>
-              <a href="Rolls-Royce.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Rolls-Royce</a>
-              <a href="Benz.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Mercedes-Benz</a>
-              <a href="Ferrari.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Ferrari</a>
-              <a href="Bmw.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Bmw</a>
-              <a href="Range-Rover.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Range Rover</a>
-              <a href="Toyota.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Toyota</a>
+              <a href="#" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Lamborghini</a>
+              <a href="#" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Tesla</a>
+              <a href="#" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Rolls-Royce</a>
+              <a href="#" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Mercedes-Benz</a>
+              <a href="#" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Ferrari</a>
+              <a href="#" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Bmw</a>
+              <a href="#" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Range Rover</a>
+              <a href="#" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Toyota</a>
               <div class="border-t border-white/10 mt-2 pt-2">
                 <a href="inventory.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-porsche-accent hover:text-white hover:bg-white/10 rounded-xl transition font-semibold">View All Inventory</a>
               </div>
@@ -217,11 +228,11 @@
               <span>Services</span>
               <svg class="w-3 h-3 text-gray-400 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
-            <div class="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-48 porsche-glass rounded-2xl p-2 hidden group-hover:block transition-all border border-white/10 shadow-2xl">
-              <a href="acquire-vehicle.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Fix My Car -Repairs • Servicing </a>
-              <a href="consign-vehicle.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Cafe By AbujaCar </a>
-                      <a href="acquire-vehicle.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Acquire Vehicle</a>
+            <div class="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 porsche-glass rounded-2xl p-2 hidden group-hover:block transition-all border border-white/10 shadow-2xl">
+              <a href="acquire-vehicle.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Acquire Vehicle</a>
               <a href="consign-vehicle.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Consign Vehicle</a>
+              <a href="THYILIEER.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Repairs &amp; Servicing</a>
+              <a href="cafe.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Cafe By Abuja Cars</a>
             </div>
           </li>
           <li><a href="about.html" class="hover:text-white transition-colors py-1">About Us</a></li>
@@ -245,7 +256,7 @@
         <span class="text-[8px] sm:text-[10px] uppercase font-light tracking-[0.2em] sm:tracking-[0.25em] text-gray-400">Comprehensive Solutions</span>
       </div>
       <h1 class="text-4xl sm:text-6xl lg:text-7xl font-light text-white tracking-tight uppercase mb-4 max-w-4xl leading-[1.1] sm:leading-tight opacity-0 animate-[fadeIn_1s_ease-out_0.5s_forwards]">
-   ABUJACAR.<span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 via-white to-gray-300"></span>
+       Drive Precision.<span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 via-white to-gray-300"></span>
       </h1>
       <p class="text-gray-400 text-xs sm:text-sm lg:text-base max-w-xl font-light leading-relaxed opacity-0 animate-[fadeIn_1s_ease-out_0.7s_forwards] px-2">
         From acquisition to consignment, trade-in to fleet management — we deliver precision at every turn.
@@ -270,8 +281,6 @@
         <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">
           <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.2em] text-gray-400 font-semibold block">Series</span>
           <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight">lamborghini</h3>
-          <p class="text-[9px] sm:text-[10px] text-gray-300/60 leading-snug mt-1 max-w-sm line-clamp-1">Italian performance and dramatic design.</p>
-          <a href="inventory.html?brand=lamborghini" class="inline-flex items-center mt-2 px-2 py-1 rounded-full border border-white/40 bg-transparent text-white/80 text-[8px] font-semibold uppercase tracking-wider hover:bg-white/10 transition">View</a>
         </div>
       </div>
       <div class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group cursor-pointer brand-grid-item">
@@ -280,8 +289,6 @@
         <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">
           <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.2em] text-gray-400 font-semibold block">Series</span>
           <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight">tesla</h3>
-          <p class="text-[9px] sm:text-[10px] text-gray-300/60 leading-snug mt-1 max-w-sm line-clamp-1">Refined electric performance and intelligent technology.</p>
-          <a href="inventory.html?brand=tesla" class="inline-flex items-center mt-2 px-2 py-1 rounded-full border border-white/40 bg-transparent text-white/80 text-[8px] font-semibold uppercase tracking-wider hover:bg-white/10 transition">View</a>
         </div>
       </div>
       <div class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group cursor-pointer brand-grid-item">
@@ -290,8 +297,6 @@
         <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">
           <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.2em] text-gray-400 font-semibold block">Series</span>
           <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight">Rolls-Royce</h3>
-          <p class="text-[9px] sm:text-[10px] text-gray-300/60 leading-snug mt-1 max-w-sm line-clamp-1">Handcrafted luxury and effortless power.</p>
-          <a href="inventory.html?brand=rolls-royce" class="inline-flex items-center mt-2 px-2 py-1 rounded-full border border-white/40 bg-transparent text-white/80 text-[8px] font-semibold uppercase tracking-wider hover:bg-white/10 transition">View</a>
         </div>
       </div>
       <div class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group cursor-pointer brand-grid-item">
@@ -300,17 +305,11 @@
         <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">
           <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.2em] text-gray-400 font-semibold block">Series</span>
           <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight">Mercedes-Benz</h3>
-          <p class="text-[9px] sm:text-[10px] text-gray-300/60 leading-snug mt-1 max-w-sm line-clamp-1">German engineering and luxurious comfort.</p>
-          <a href="inventory.html?brand=mercedes-benz" class="inline-flex items-center mt-2 px-2 py-1 rounded-full border border-white/40 bg-transparent text-white/80 text-[8px] font-semibold uppercase tracking-wider hover:bg-white/10 transition">View</a>
         </div>
       </div>
     </div>
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 border-b border-white/10 pb-4 sm:pb-6">
-      <div>
-        <span class="text-porsche-accent text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em] block mb-1 sm:mb-2">Manufacturers</span>
-
-      </div>
-      
+    <div class="mb-8 sm:mb-12 border-b border-white/10 pb-4 sm:pb-6">
+      <span class="text-porsche-accent text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em]">More marques</span>
     </div>
     <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-8 sm:mb-16">
       <div class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group cursor-pointer brand-grid-item">
@@ -319,8 +318,6 @@
         <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">
           <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.2em] text-gray-400 font-semibold block">Series</span>
           <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight">Ferrari</h3>
-          <p class="text-[9px] sm:text-[10px] text-gray-300/60 leading-snug mt-1 max-w-sm line-clamp-1">Iconic Italian craftsmanship and performance.</p>
-          <a href="inventory.html?brand=ferrari" class="inline-flex items-center mt-2 px-2 py-1 rounded-full border border-white/40 bg-transparent text-white/80 text-[8px] font-semibold uppercase tracking-wider hover:bg-white/10 transition">View</a>
         </div>
       </div>
       <div class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group cursor-pointer brand-grid-item">
@@ -329,8 +326,6 @@
         <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">
           <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.2em] text-gray-400 font-semibold block">Series</span>
           <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight"> Range Rover</h3>
-          <p class="text-[9px] sm:text-[10px] text-gray-300/60 leading-snug mt-1 max-w-sm line-clamp-1">Luxury SUV capability with elegant refinement.</p>
-          <a href="inventory.html?brand=range-rover" class="inline-flex items-center mt-2 px-2 py-1 rounded-full border border-white/40 bg-transparent text-white/80 text-[8px] font-semibold uppercase tracking-wider hover:bg-white/10 transition">View</a>
         </div>
       </div>
       <div class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group cursor-pointer brand-grid-item">
@@ -339,8 +334,6 @@
         <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">
           <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.2em] text-gray-400 font-semibold block">Series</span>
           <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight">BMW</h3>
-          <p class="text-[9px] sm:text-[10px] text-gray-300/60 leading-snug mt-1 max-w-sm line-clamp-1">Dynamic driving pleasure and precise engineering.</p>
-          <a href="inventory.html?brand=bmw" class="inline-flex items-center mt-2 px-2 py-1 rounded-full border border-white/40 bg-transparent text-white/80 text-[8px] font-semibold uppercase tracking-wider hover:bg-white/10 transition">View</a>
         </div>
       </div>
       <div class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group cursor-pointer brand-grid-item">
@@ -349,8 +342,6 @@
         <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">
           <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.2em] text-gray-400 font-semibold block">Series</span>
           <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight">TOYOTA</h3>
-          <p class="text-[9px] sm:text-[10px] text-gray-300/60 leading-snug mt-1 max-w-sm line-clamp-1">Trusted reliability for every Nigerian road.</p>
-          <a href="inventory.html?brand=toyota" class="inline-flex items-center mt-2 px-2 py-1 rounded-full border border-white/40 bg-transparent text-white/80 text-[8px] font-semibold uppercase tracking-wider hover:bg-white/10 transition">View</a>
         </div>
       </div>
     </div>
@@ -362,7 +353,7 @@
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-10 sm:mb-16">
         <span class="text-porsche-accent text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em] block mb-1 sm:mb-2">Our Advantage</span>
-        <h2 class="text-2xl sm:text-5xl font-extrabold text-white uppercase tracking-tight mb-2 sm:mb-4">Why AbujaCar</h2>
+        <h2 class="text-2xl sm:text-5xl font-extrabold text-white uppercase tracking-tight mb-2 sm:mb-4">Why Abuja Cars</h2>
         <p class="text-gray-400 max-w-2xl mx-auto text-xs sm:text-sm">Experience automotive excellence through our curated selection and premium services.</p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
@@ -454,12 +445,12 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
         <div class="porsche-card p-5 sm:p-8 rounded-xl sm:rounded-2xl flex flex-col justify-between">
           <div><div class="flex gap-1 mb-3 sm:mb-4"><span class="text-porsche-accent text-lg">★</span><span class="text-porsche-accent text-lg">★</span><span class="text-porsche-accent text-lg">★</span><span class="text-porsche-accent text-lg">★</span><span class="text-porsche-accent text-lg">★</span></div>
-          <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">"Exceptional service from start to finish. AbujaCar delivered my Mercedes within 48 hours and everything was perfect. Highly recommended!"</p></div>
+          <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">"Exceptional service from start to finish. Abuja Cars delivered my Mercedes within 48 hours and everything was perfect. Highly recommended!"</p></div>
           <div><h4 class="text-white font-bold text-xs sm:text-sm">Chioma Okafor</h4><p class="text-gray-500 text-[10px] sm:text-xs">Lagos, Nigeria</p></div>
         </div>
         <div class="porsche-card p-5 sm:p-8 rounded-xl sm:rounded-2xl flex flex-col justify-between">
           <div><div class="flex gap-1 mb-3 sm:mb-4"><span class="text-porsche-accent text-lg">★</span><span class="text-porsche-accent text-lg">★</span><span class="text-porsche-accent text-lg">★</span><span class="text-porsche-accent text-lg">★</span><span class="text-porsche-accent text-lg">★</span></div>
-          <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">"The transparency and professionalism of the AbujaCar team is unmatched. They sourced my Lamborghini from Italy flawlessly."</p></div>
+          <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">"The transparency and professionalism of the Abuja Cars team is unmatched. They sourced my Lamborghini from Italy flawlessly."</p></div>
           <div><h4 class="text-white font-bold text-xs sm:text-sm">Tunde Adeyemi</h4><p class="text-gray-500 text-[10px] sm:text-xs">Abuja, Nigeria</p></div>
         </div>
         <div class="porsche-card p-5 sm:p-8 rounded-xl sm:rounded-2xl flex flex-col justify-between">
@@ -502,12 +493,12 @@
   </section>
 
   <!-- CTA SECTION -->
-  <section id="contact" class="py-12 sm:py-20 px-4 sm:px-8 bg-gradient-to-r from-porsche-accent/10 to-porsche-gold/10 border-y border-white/10">
+  <section id="contact-overview" class="py-12 sm:py-20 px-4 sm:px-8 bg-gradient-to-r from-porsche-accent/10 to-porsche-gold/10 border-y border-white/10">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-2xl sm:text-5xl font-extrabold text-white uppercase tracking-tight mb-4 sm:mb-6">Ready to Drive Precision?</h2>
       <p class="text-gray-400 text-xs sm:text-sm mb-6 sm:mb-8 max-w-2xl mx-auto">Connect with our expert advisors today to explore your perfect vehicle or begin your consignment journey.</p>
       <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-        <button class="btn-porsche bg-porsche-accent text-white hover:bg-porsche-accent/90 font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full text-xs sm:text-sm uppercase tracking-widest transition">Schedule Consultation</button>
+        <a href="contact.html" class="btn-porsche bg-porsche-accent text-white hover:bg-porsche-accent/90 font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full text-xs sm:text-sm uppercase tracking-widest transition">Schedule Consultation</a>
         <a href="tel:+2348012345678" class="btn-porsche border border-white text-white hover:bg-white/10 font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full text-xs sm:text-sm uppercase tracking-widest transition">Call: +234 801 234 5678</a>
       </div>
     </div>
@@ -647,7 +638,7 @@
         <div>
           <div class="flex items-center gap-2 sm:gap-3.5 mb-3 sm:mb-4">
             <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden p-0.5 bg-black/40 border border-white/20 flex items-center justify-center">
-              <img src="logo.jpeg" alt="AbujaCar" class="w-full h-full object-cover rounded-full" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'text-white text-xs font-bold\'>AC</span>'"/>
+              <img src="logo.jpeg" alt="Abuja Cars" class="w-full h-full object-cover rounded-full" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'text-white text-xs font-bold\'>AC</span>'"/>
             </div>
             <span class="text-white font-extrabold text-[10px] sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] uppercase">ABUJA<span class="text-gray-400 font-light">CARS</span></span>
           </div>
@@ -674,7 +665,7 @@
         <div>
           <h4 class="text-white font-bold text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4">Contact</h4>
           <ul class="space-y-1.5 sm:space-y-2 text-[10px] sm:text-xs text-gray-400">
-            <li>Email: <a href="mailto:info@AbujaCar.com" class="hover:text-white transition">info@AbujaCar.com</a></li>
+            <li>Email: <a href="mailto:info@abujacars.com" class="hover:text-white transition">info@abujacars.com</a></li>
             <li>Phone: <a href="tel:+2348012345678" class="hover:text-white transition">+234 801 234 5678</a></li>
             <li>Address: Abuja, Nigeria</li>
             <li>Hours: 9AM - 6PM (Daily)</li>
@@ -682,7 +673,7 @@
         </div>
       </div>
       <div class="border-t border-white/10 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[9px] sm:text-[10px] text-gray-600 uppercase tracking-widest">
-        <p>© 2026 AbujaCar. All rights reserved. Designed with Precision.</p>
+        <p>© 2026 Abuja Cars. All rights reserved. Designed with Precision.</p>
         <div class="flex gap-4 sm:gap-6">
           <a href="#" class="hover:text-gray-400 transition">Privacy Policy</a>
           <a href="#" class="hover:text-gray-400 transition">Terms of Service</a>
