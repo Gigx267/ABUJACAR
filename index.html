@@ -265,6 +265,82 @@ Diagnostics </a>
     </div>
     <div class="w-full h-px bg-white/10 relative z-20"></div>
   </header>
+    <style>
+ <!-- ══════════════════════════════════════════════════════════
+     REPLACE the existing brand CSS in your <style> block
+     (the 4 lines starting with .brand-grid-item) with this:
+     ══════════════════════════════════════════════════════════ -->
+    /* ── CURATED BRANDS ───────────────────────────────── */
+    .brand-grid-item { position: relative; min-height: 260px; }
+    @media (min-width: 640px) { .brand-grid-item { min-height: 340px; } }
+    @media (min-width: 1024px) { .brand-grid-item { min-height: 380px; } }
+
+    .brand-media { position: absolute; inset: 0; overflow: hidden; }
+
+    .brand-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: grayscale(30%) contrast(1.05) brightness(.85);
+      transition: opacity .7s cubic-bezier(.16,1,.3,1),
+                  transform .9s cubic-bezier(.16,1,.3,1),
+                  filter .5s ease;
+    }
+    .brand-img-b { opacity: 0; }
+
+    .brand-grid-item:hover .brand-img { filter: grayscale(0%) contrast(1.1) brightness(1); }
+    .brand-grid-item:hover .brand-img-a { opacity: 0; transform: scale(1.05); }
+    .brand-grid-item:hover .brand-img-b { opacity: 1; transform: scale(1.08); }
+
+    /* graceful fallback when a hover image is missing */
+    .brand-grid-item.no-swap:hover .brand-img-a { opacity: 1; transform: scale(1.05); }
+
+    .brand-grid-item .brand-text { position: relative; z-index: 1; color: #fff; }
+
+    .brand-desc {
+      max-height: 0; opacity: 0; overflow: hidden; margin-top: 0;
+      transition: max-height .55s cubic-bezier(.16,1,.3,1),
+                  opacity .4s ease,
+                  margin .55s cubic-bezier(.16,1,.3,1);
+    }
+    .brand-grid-item:hover .brand-desc { max-height: 140px; opacity: 1; margin-top: .5rem; }
+
+    /* Glass / translucent CTA button */
+    .brand-btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(255,255,255,.08);
+      -webkit-backdrop-filter: blur(12px) saturate(160%);
+      backdrop-filter: blur(12px) saturate(160%);
+      border: 1px solid rgba(255,255,255,.22);
+      color: #fff;
+      padding: .55rem 1.05rem;
+      border-radius: 999px;
+      font-size: 9px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      white-space: nowrap;
+      opacity: 0; transform: translateY(10px);
+      transition: opacity .4s cubic-bezier(.16,1,.3,1),
+                  transform .4s cubic-bezier(.16,1,.3,1),
+                  background .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+    .brand-grid-item:hover .brand-btn { opacity: 1; transform: translateY(0); }
+    .brand-btn:hover {
+      background: rgba(0,102,255,.9);
+      border-color: #0066FF;
+      box-shadow: 0 10px 26px -10px rgba(0,102,255,.9);
+    }
+    .brand-btn svg { width: 12px; height: 12px; transition: transform .3s ease; }
+    .brand-btn:hover svg { transform: translateX(4px); }
+
+    /* Touch devices: no hover — show everything */
+    @media (hover: none) {
+      .brand-img-b { display: none; }
+      .brand-desc { max-height: 160px; opacity: 1; margin-top: .5rem; }
+      .brand-btn { opacity: 1; transform: none; }
+    }
+
+
+    </style>
 
   <!-- CURATED BRANDS -->
   <section id="inventory" class="py-12 sm:py-20 px-4 sm:px-8 max-w-7xl mx-auto">
@@ -275,76 +351,223 @@ Diagnostics </a>
       </div>
       <p class="text-gray-400 text-[11px] sm:text-xs max-w-xs mt-3 md:mt-0 font-normal">Factory-standard engineering from global automotive pioneers.</p>
     </div>
-    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-8 sm:mb-16">
-      <div class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group cursor-pointer brand-grid-item">
-        <img src="P (37).jpg" alt="Lamborghini" class="brand-img grayscale-[20%] group-hover:grayscale-0" onerror="this.style.display='none';this.parentElement.classList.add('img-placeholder');this.parentElement.innerHTML='<span class=\'brand-text\'>Lamborghini</span>'"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-porsche-black via-porsche-black/20 to-transparent"></div>
-        <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">
-          <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.2em] text-gray-400 font-semibold block">Series</span>
-          <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight">lamborghini</h3>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-8 sm:mb-16">
+
+      <!-- ── LAMBORGHINI ── -->
+      <a href="inventory.html?brand=lamborghini&search=lamborghini"
+         class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group block brand-grid-item"
+         aria-label="Browse Lamborghini inventory">
+        <div class="brand-media">
+          <img src="P (37).jpg" alt="Lamborghini" loading="lazy"
+               class="brand-img brand-img-a"
+               onerror="this.style.display='none'"/>
+          <img src="P (18).jpg" alt="Lamborghini" loading="lazy"
+               class="brand-img brand-img-b"
+               onerror="this.style.display='none';this.closest('.brand-grid-item').classList.add('no-swap')"/>
         </div>
-      </div>
-      <div class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group cursor-pointer brand-grid-item">
-        <img src="P (14).jpg" alt="Tesla" class="brand-img grayscale-[20%] group-hover:grayscale-0" onerror="this.style.display='none';this.parentElement.classList.add('img-placeholder');this.parentElement.innerHTML='<span class=\'brand-text\'>Tesla</span>'"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-porsche-black via-porsche-black/20 to-transparent"></div>
-        <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">
+        <div class="absolute inset-0 bg-gradient-to-t from-porsche-black via-porsche-black/55 to-transparent"></div>
+        <div class="absolute inset-0 p-3.5 sm:p-6 flex flex-col justify-end">
           <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.2em] text-gray-400 font-semibold block">Series</span>
-          <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight">tesla</h3>
+          <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight">Lamborghini</h3>
+          <p class="brand-desc text-gray-300 text-[10px] sm:text-xs leading-relaxed font-light">
+            Italian hypercar icon. Naturally-aspirated V10 &amp; V12 machines built for pure adrenaline.
+          </p>
+          <span class="brand-btn mt-3 self-start">
+            View Inventory
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
         </div>
-      </div>
-      <div class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group cursor-pointer brand-grid-item">
-        <img src="P (18).jpg" alt="Rolls-Royce" class="brand-img grayscale-[20%] group-hover:grayscale-0" onerror="this.style.display='none';this.parentElement.classList.add('img-placeholder');this.parentElement.innerHTML='<span class=\'brand-text\'>Rolls-Royce</span>'"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-porsche-black via-porsche-black/20 to-transparent"></div>
-        <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">
+      </a>
+
+      <!-- ── TESLA ── -->
+      <a href="inventory.html?brand=tesla&search=tesla"
+         class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group block brand-grid-item"
+         aria-label="Browse Tesla inventory">
+        <div class="brand-media">
+          <img src="P (14).jpg" alt="Tesla" loading="lazy"
+               class="brand-img brand-img-a"
+               onerror="this.style.display='none'"/>
+          <img src="P (38).jpg" alt="Tesla" loading="lazy"
+               class="brand-img brand-img-b"
+               onerror="this.style.display='none';this.closest('.brand-grid-item').classList.add('no-swap')"/>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-porsche-black via-porsche-black/55 to-transparent"></div>
+        <div class="absolute inset-0 p-3.5 sm:p-6 flex flex-col justify-end">
+          <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.2em] text-gray-400 font-semibold block">Series</span>
+          <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight">Tesla</h3>
+          <p class="brand-desc text-gray-300 text-[10px] sm:text-xs leading-relaxed font-light">
+            Electric performance pioneer. Instant torque, zero emissions and intelligent autopilot.
+          </p>
+          <span class="brand-btn mt-3 self-start">
+            View Inventory
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- ── ROLLS-ROYCE ── -->
+      <a href="inventory.html?brand=rolls-royce&search=rolls"
+         class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group block brand-grid-item"
+         aria-label="Browse Rolls-Royce inventory">
+        <div class="brand-media">
+          <img src="P (18).jpg" alt="Rolls-Royce" loading="lazy"
+               class="brand-img brand-img-a"
+               onerror="this.style.display='none'"/>
+          <img src="P (37).jpg" alt="Rolls-Royce" loading="lazy"
+               class="brand-img brand-img-b"
+               onerror="this.style.display='none';this.closest('.brand-grid-item').classList.add('no-swap')"/>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-porsche-black via-porsche-black/55 to-transparent"></div>
+        <div class="absolute inset-0 p-3.5 sm:p-6 flex flex-col justify-end">
           <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.2em] text-gray-400 font-semibold block">Series</span>
           <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight">Rolls-Royce</h3>
+          <p class="brand-desc text-gray-300 text-[10px] sm:text-xs leading-relaxed font-light">
+            The pinnacle of handcrafted luxury. Effortless power wrapped in absolute refinement.
+          </p>
+          <span class="brand-btn mt-3 self-start">
+            View Inventory
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
         </div>
-      </div>
-      <div class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group cursor-pointer brand-grid-item">
-        <img src="P (38).jpg" alt="Mercedes-Benz" class="brand-img grayscale-[20%] group-hover:grayscale-0" onerror="this.style.display='none';this.parentElement.classList.add('img-placeholder');this.parentElement.innerHTML='<span class=\'brand-text\'>Mercedes-Benz</span>'"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-porsche-black via-porsche-black/20 to-transparent"></div>
-        <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">
+      </a>
+
+      <!-- ── MERCEDES-BENZ ── -->
+      <a href="inventory.html?brand=mercedes-benz&search=mercedes"
+         class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group block brand-grid-item"
+         aria-label="Browse Mercedes-Benz inventory">
+        <div class="brand-media">
+          <img src="P (38).jpg" alt="Mercedes-Benz" loading="lazy"
+               class="brand-img brand-img-a"
+               onerror="this.style.display='none'"/>
+          <img src="P (14).jpg" alt="Mercedes-Benz" loading="lazy"
+               class="brand-img brand-img-b"
+               onerror="this.style.display='none';this.closest('.brand-grid-item').classList.add('no-swap')"/>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-porsche-black via-porsche-black/55 to-transparent"></div>
+        <div class="absolute inset-0 p-3.5 sm:p-6 flex flex-col justify-end">
           <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.2em] text-gray-400 font-semibold block">Series</span>
           <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight">Mercedes-Benz</h3>
+          <p class="brand-desc text-gray-300 text-[10px] sm:text-xs leading-relaxed font-light">
+            German engineering mastery — from executive saloons to hand-built AMG performance.
+          </p>
+          <span class="brand-btn mt-3 self-start">
+            View Inventory
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
         </div>
-      </div>
+      </a>
     </div>
+
     <div class="mb-8 sm:mb-12 border-b border-white/10 pb-4 sm:pb-6">
       <span class="text-porsche-accent text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em]">More marques</span>
     </div>
-    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-8 sm:mb-16">
-      <div class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group cursor-pointer brand-grid-item">
-        <img src="K (4).jpg" alt="Lamborghini" class="brand-img grayscale-[20%] group-hover:grayscale-0" onerror="this.style.display='none';this.parentElement.classList.add('img-placeholder');this.parentElement.innerHTML='<span class=\'brand-text\'>Lamborghini</span>'"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-porsche-black via-porsche-black/20 to-transparent"></div>
-        <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-8 sm:mb-16">
+
+      <!-- ── FERRARI ── -->
+      <a href="inventory.html?brand=ferrari&search=ferrari"
+         class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group block brand-grid-item"
+         aria-label="Browse Ferrari inventory">
+        <div class="brand-media">
+          <img src="K (4).jpg" alt="Ferrari" loading="lazy"
+               class="brand-img brand-img-a"
+               onerror="this.style.display='none'"/>
+          <img src="P (19).jpg" alt="Ferrari" loading="lazy"
+               class="brand-img brand-img-b"
+               onerror="this.style.display='none';this.closest('.brand-grid-item').classList.add('no-swap')"/>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-porsche-black via-porsche-black/55 to-transparent"></div>
+        <div class="absolute inset-0 p-3.5 sm:p-6 flex flex-col justify-end">
           <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.2em] text-gray-400 font-semibold block">Series</span>
           <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight">Ferrari</h3>
+          <p class="brand-desc text-gray-300 text-[10px] sm:text-xs leading-relaxed font-light">
+            Maranello's finest. Decades of racing heritage translated into road-going legend.
+          </p>
+          <span class="brand-btn mt-3 self-start">
+            View Inventory
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
         </div>
-      </div>
-      <div class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group cursor-pointer brand-grid-item">
-        <img src="z4.png" alt="Tesla" class="brand-img grayscale-[20%] group-hover:grayscale-0" onerror="this.style.display='none';this.parentElement.classList.add('img-placeholder');this.parentElement.innerHTML='<span class=\'brand-text\'>Tesla</span>'"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-porsche-black via-porsche-black/20 to-transparent"></div>
-        <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">
+      </a>
+
+      <!-- ── RANGE ROVER ── -->
+      <a href="inventory.html?brand=range-rover&search=range%20rover"
+         class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group block brand-grid-item"
+         aria-label="Browse Range Rover inventory">
+        <div class="brand-media">
+          <img src="z4.png" alt="Range Rover" loading="lazy"
+               class="brand-img brand-img-a"
+               onerror="this.style.display='none'"/>
+          <img src="z6.png" alt="Range Rover" loading="lazy"
+               class="brand-img brand-img-b"
+               onerror="this.style.display='none';this.closest('.brand-grid-item').classList.add('no-swap')"/>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-porsche-black via-porsche-black/55 to-transparent"></div>
+        <div class="absolute inset-0 p-3.5 sm:p-6 flex flex-col justify-end">
           <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.2em] text-gray-400 font-semibold block">Series</span>
-          <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight"> Range Rover</h3>
+          <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight">Range Rover</h3>
+          <p class="brand-desc text-gray-300 text-[10px] sm:text-xs leading-relaxed font-light">
+            Uncompromising luxury SUV. Conquers any terrain and turns heads in equal measure.
+          </p>
+          <span class="brand-btn mt-3 self-start">
+            View Inventory
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
         </div>
-      </div>
-      <div class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group cursor-pointer brand-grid-item">
-        <img src="z6.png" alt="Rolls-Royce" class="brand-img grayscale-[20%] group-hover:grayscale-0" onerror="this.style.display='none';this.parentElement.classList.add('img-placeholder');this.parentElement.innerHTML='<span class=\'brand-text\'>Rolls-Royce</span>'"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-porsche-black via-porsche-black/20 to-transparent"></div>
-        <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">
+      </a>
+
+      <!-- ── BMW ── -->
+      <a href="inventory.html?brand=bmw&search=bmw"
+         class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group block brand-grid-item"
+         aria-label="Browse BMW inventory">
+        <div class="brand-media">
+          <img src="z6.png" alt="BMW" loading="lazy"
+               class="brand-img brand-img-a"
+               onerror="this.style.display='none'"/>
+          <img src="z5.png" alt="BMW" loading="lazy"
+               class="brand-img brand-img-b"
+               onerror="this.style.display='none';this.closest('.brand-grid-item').classList.add('no-swap')"/>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-porsche-black via-porsche-black/55 to-transparent"></div>
+        <div class="absolute inset-0 p-3.5 sm:p-6 flex flex-col justify-end">
           <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.2em] text-gray-400 font-semibold block">Series</span>
           <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight">BMW</h3>
+          <p class="brand-desc text-gray-300 text-[10px] sm:text-xs leading-relaxed font-light">
+            The ultimate driving machine. Precision handling meets refined German innovation.
+          </p>
+          <span class="brand-btn mt-3 self-start">
+            View Inventory
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
         </div>
-      </div>
-      <div class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group cursor-pointer brand-grid-item">
-        <img src="z5.png" alt="Mercedes-Benz" class="brand-img grayscale-[20%] group-hover:grayscale-0" onerror="this.style.display='none';this.parentElement.classList.add('img-placeholder');this.parentElement.innerHTML='<span class=\'brand-text\'>Mercedes-Benz</span>'"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-porsche-black via-porsche-black/20 to-transparent"></div>
-        <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">
+      </a>
+
+      <!-- ── TOYOTA ── -->
+      <a href="inventory.html?brand=toyota&search=toyota"
+         class="porsche-card rounded-xl sm:rounded-2xl overflow-hidden relative group block brand-grid-item"
+         aria-label="Browse Toyota inventory">
+        <div class="brand-media">
+          <img src="z5.png" alt="Toyota" loading="lazy"
+               class="brand-img brand-img-a"
+               onerror="this.style.display='none'"/>
+          <img src="z4.png" alt="Toyota" loading="lazy"
+               class="brand-img brand-img-b"
+               onerror="this.style.display='none';this.closest('.brand-grid-item').classList.add('no-swap')"/>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-porsche-black via-porsche-black/55 to-transparent"></div>
+        <div class="absolute inset-0 p-3.5 sm:p-6 flex flex-col justify-end">
           <span class="text-[7px] sm:text-[9px] uppercase tracking-[0.2em] text-gray-400 font-semibold block">Series</span>
-          <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight">TOYOTA</h3>
+          <h3 class="text-sm sm:text-2xl font-black text-white uppercase tracking-tight">Toyota</h3>
+          <p class="brand-desc text-gray-300 text-[10px] sm:text-xs leading-relaxed font-light">
+            Legendary reliability. Durable, efficient and engineered for African roads.
+          </p>
+          <span class="brand-btn mt-3 self-start">
+            View Inventory
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 
