@@ -1,48 +1,44 @@
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us — Abuja Cars</title>
-  <meta name="description" content="Learn about Abuja Cars – our mission, vision, and the team behind Nigeria's premier automotive platform." />
-  <link rel="canonical" href="https://abujacars.com/about" />
-  <meta property="og:title" content="About Abuja Cars — Precision, Trust, Excellence" />
-  <meta property="og:description" content="Discover the story behind Abuja Cars and our commitment to automotive excellence." />
+  <title>AbujaCar — About Us | Luxury Automotive Solutions</title>
+  <link rel="icon" type="image/x-icon" href="logo.jpeg">
+  <meta name="description" content="AbujaCar Services: vehicle acquisition, consignment, trade-in, fleet management. Premium automotive solutions in Abuja." />
+  <link rel="canonical" href="https://abujaCar.com/about.html" />
+  <meta property="og:title" content="AbujaCar — About Us" />
+  <meta property="og:description" content="Discover AbujaCar's trusted approach to luxury automotive experiences." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://abujacars.com/about" />
+  <meta property="og:url" content="https://abujaCar.com/about.html" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-
- <script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: { sans: ['"Inter"', 'sans-serif'] },
-        colors: {
-          porsche: {
-            black: '#0E0E11',
-            dark: '#141418',
-            card: '#1A1A20',
-            border: '#2A2A35',
-            accent: '#0066FF',
-            gold: '#4A90E2',
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Inter"', 'sans-serif'] },
+          colors: {
+            porsche: {
+              black: '#0E0E11',
+              dark: '#141418',
+              card: '#1A1A20',
+              border: '#2A2A35',
+              accent: '#0066FF',
+              gold: '#4A90E2',
+            }
           }
-        }
+        },
       },
-    },
-  }
-</script>
-
+    }
+  </script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background-color: #0E0E11;
-      color: #F3F4F6;
-      overflow-x: hidden;
-    }
+    body { background-color: #0E0E11; color: #F3F4F6; overflow-x: hidden; }
     .porsche-glass {
       background: rgba(20, 20, 24, 0.65);
       backdrop-filter: blur(20px);
@@ -52,30 +48,11 @@
       background: #141418;
       border: 1px solid rgba(255, 255, 255, 0.07);
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-      overflow: hidden;
-    }
-    .porsche-card::before {
-      content: '';
-      position: absolute;
-      inset: -50%;
-      background: linear-gradient(45deg, transparent 30%, rgba(208, 16, 37, 0.1), transparent 70%);
-      transform: rotate(45deg);
-      transition: all 0.6s;
-      opacity: 0;
-    }
-    .porsche-card:hover::before {
-      opacity: 1;
-      animation: shimmer 0.6s ;
     }
     .porsche-card:hover {
       border-color: rgba(255, 255, 255, 0.25);
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 30px 60px -20px rgba(208, 16, 37, 0.3);
-    }
-    @keyframes shimmer {
-      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
     }
     .btn-porsche {
       position: relative;
@@ -90,76 +67,27 @@
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
       transition: left 0.6s ease;
     }
-    .btn-porsche:hover::before {
-      left: 100%;
-    }
-    .custom-scrollbar::-webkit-scrollbar {
-      width: 8px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-track {
-      background: #0E0E11;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: #2A2A35;
-      border-radius: 4px;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes slideInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInMenu {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes floatUp {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-    @keyframes glow {
-      0%, 100% { box-shadow: 0 0 20px rgba(208, 16, 37, 0); }
-      50% { box-shadow: 0 0 40px rgba(208, 16, 37, 0.4); }
-    }
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Mobile Menu */
+    .btn-porsche:hover::before { left: 100%; }
+    .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #0E0E11; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #2A2A35; border-radius: 4px; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInMenu { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    
     .mobile-menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 85%;
-      max-width: 340px;
-      height: 100vh;
-      background: #0E0E11;
-      z-index: 9999;
-      padding: 24px 28px;
+      position: fixed; top: 0; right: -100%; width: 85%; max-width: 340px; height: 100vh;
+      background: #0E0E11; z-index: 9999; padding: 24px 28px;
       transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      overflow-y: auto;
-      border-left: 1px solid rgba(255,255,255,0.08);
+      overflow-y: auto; border-left: 1px solid rgba(255,255,255,0.08);
     }
-    .mobile-menu.open {
-      right: 0;
-    }
+    .mobile-menu.open { right: 0; }
     .mobile-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.7);
-      z-index: 9998;
-      opacity: 0;
-      pointer-events: none;
+      position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+      z-index: 9998; opacity: 0; pointer-events: none;
       transition: opacity 0.4s ease;
     }
-    .mobile-overlay.open {
-      opacity: 1;
-      pointer-events: all;
-    }
+    .mobile-overlay.open { opacity: 1; pointer-events: all; }
     .mobile-menu a, .mobile-menu button {
       animation: fadeInMenu 0.3s ease forwards;
       opacity: 0;
@@ -172,194 +100,251 @@
     .mobile-menu a:nth-child(6) { animation-delay: 0.30s; }
     .mobile-menu a:nth-child(7) { animation-delay: 0.35s; }
     .mobile-menu a:nth-child(8) { animation-delay: 0.40s; }
-
-    @media (max-width: 640px) {
-      .porsche-card:hover {
-        transform: translateY(-4px) scale(1.01);
-      }
-    }
-
-    body.menu-open {
-      overflow: hidden;
-    }
-
+    body.menu-open { overflow: hidden; }
     .img-placeholder {
       background: linear-gradient(135deg, #1a1a24 0%, #0E0E11 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #2A2A35;
-      font-size: 14px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 600;
-      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      color: #2A2A35; font-size: 14px; letter-spacing: 2px; text-transform: uppercase;
+      font-weight: 600; position: relative;
     }
     .img-placeholder::after {
-      content: '🚗';
-      font-size: 48px;
-      opacity: 0.3;
-      position: absolute;
+      content: '🚗'; font-size: 48px; opacity: 0.3; position: absolute;
     }
-
-    /* About page specific */
-    .hero-about {
+    .hero-fallback {
       background: linear-gradient(135deg, #0E0E11 0%, #1a1a24 50%, #0E0E11 100%);
       position: relative;
-      background-size: 200% 200%;
-      animation: gradientShift 15s ease infinite;
     }
-    .hero-about::after {
-      content: 'ABUJA CARS';
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: clamp(40px, 10vw, 120px);
-      font-weight: 800;
-      letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.03);
-      font-family: 'Inter', sans-serif;
-      pointer-events: none;
-      animation: pulse 4s ease-in-out infinite;
+    .hero-fallback::after {
+      content: 'AbujaCar';
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      font-size: clamp(40px, 10vw, 120px); font-weight: 800; letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.03); font-family: 'Inter', sans-serif;
     }
-    .stat-number {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 800;
-      background: linear-gradient(135deg, #ffffff, #a0a0a0);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: fadeIn 1s ease-out backwards;
-    }
-    .value-icon {
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 12px;
-      background: rgba(208, 16, 37, 0.12);
-      color: #D01025;
-      font-size: 24px;
-      flex-shrink: 0;
-      transition: all 0.3s ease;
-      margin: 0 auto 16px;
-    }
-    .porsche-card:hover .value-icon {
-      background: rgba(208, 16, 37, 0.25);
-      transform: scale(1.1) rotate(-5deg);
-      animation: floatUp 2s ease-in-out infinite;
-    }
-    .team-img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      object-position: center;
+    .service-icon {
+      width: 56px; height: 56px;
+      background: rgba(0, 102, 255, 0.12);
       border-radius: 16px;
-      transition: all 0.5s ease;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
     }
-    .porsche-card:hover .team-img {
-      transform: scale(1.08);
+    .service-icon svg { width: 28px; height: 28px; stroke: #0066FF; }
+    .brand-grid-item { min-height: 240px; }
+    .brand-grid-item .brand-img { width: 100%; height: 100%; min-height: 240px; object-fit: cover; transition: transform .6s cubic-bezier(.16,1,.3,1), filter .4s ease; }
+    .brand-grid-item:hover .brand-img { transform: scale(1.06); }
+    .brand-grid-item .brand-text { position: relative; z-index: 1; color: #fff; }
+    .bento-card {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(20,20,24,0.8), rgba(14,14,17,0.96));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 20px 50px -25px rgba(0,0,0,0.9);
+      transition: transform .4s cubic-bezier(.16,1,.3,1), border-color .4s ease, box-shadow .4s ease;
+    }
+    .bento-card::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,12,0.08) 0%, rgba(10,10,12,0.12) 20%, rgba(10,10,12,0.85) 100%);
+      z-index: 1;
+    }
+    .bento-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0,102,255,0.4);
+      box-shadow: 0 28px 60px -28px rgba(0,102,255,0.35);
+    }
+    .bento-card:hover .bento-image { transform: scale(1.08); }
+    .bento-image {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .7s cubic-bezier(.16,1,.3,1), filter .4s ease;
+      filter: saturate(1.06) contrast(1.04);
+    }
+    .bento-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 220px;
+      padding: 1.1rem;
+    }
+    .bento-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(10,10,12,0.35);
+      backdrop-filter: blur(8px);
+      color: #d1d5db;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-size: 7px;
+      font-weight: 700;
+      padding: 0.35rem 0.55rem;
+      border-radius: 999px;
+      width: fit-content;
+    }
+    .bento-card h3 {
+      margin-top: 0.6rem;
+      font-size: clamp(1.15rem, 2vw, 2.25rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      font-weight: 900;
+      color: white;
+      text-transform: uppercase;
+    }
+    .bento-card p {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.7rem;
+      line-height: 1.5;
+      max-width: 26rem;
+      margin-top: 0.5rem;
+    }
+    .bento-action {
+      margin-top: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      align-self: flex-start;
+      padding: 0.6rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: all .3s ease;
+    }
+    .bento-card:hover .bento-action {
+      background: rgba(0,102,255,0.9);
+      border-color: rgba(0,102,255,0.9);
+      box-shadow: 0 14px 25px -12px rgba(0,102,255,0.9);
+    }
+    .bento-action svg {
+      width: 12px; height: 12px; transition: transform .3s ease;
+    }
+    .bento-card:hover .bento-action svg { transform: translateX(4px); }
+    .scroll-reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.16,1,.3,1); }
+    .scroll-reveal.active { opacity: 1; transform: translateY(0); }
+    .stat-number { color: #fff; font-size: clamp(1.75rem, 4vw, 2.75rem); line-height: 1; font-weight: 900; letter-spacing: -.05em; }
+    .value-icon { width: 3.5rem; height: 3.5rem; display: grid; place-items: center; margin: 0 auto 1.25rem; border-radius: 1rem; background: rgba(0,102,255,.12); font-size: 1.5rem; border: 1px solid rgba(0,102,255,.2); }
+    @media (max-width: 640px) { .mobile-menu { padding: 20px; } }
+    summary { list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
     }
     @media (max-width: 640px) {
-      .team-img {
-        height: 220px;
-      }
-    }
-
-    /* Scroll animations */
-    .scroll-reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .scroll-reveal.active {
-      opacity: 1;
-      transform: translateY(0);
+      .service-icon { width: 48px; height: 48px; }
+      .service-icon svg { width: 22px; height: 22px; }
+      .bento-content { min-height: 180px; padding: 0.9rem; }
+      .bento-card p { font-size: 0.62rem; }
+      .bento-action { letter-spacing: 0.1em; }
     }
   </style>
 </head>
-
 <body class="bg-porsche-black font-sans antialiased selection:bg-porsche-accent selection:text-white custom-scrollbar">
 
-  <!-- MOBILE OVERLAY -->
+  <!-- MOBILE OVERLAY & MENU (same as home) -->
   <div class="mobile-overlay" id="mobileOverlay"></div>
-
-  <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
       <div class="flex items-center gap-2.5">
         <div class="w-8 h-8 rounded-full overflow-hidden p-0.5 bg-black/40 border border-white/20">
-          <img src="logo.jpeg" alt="Abuja Cars" class="w-full h-full object-cover rounded-full" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'text-white text-xs font-bold\'>AC</span>'"/>
+          <img src="logo.jpeg" alt="AbujaCar" class="w-full h-full object-cover rounded-full" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'text-white text-xs font-bold\'>AC</span>'"/>
         </div>
-        <span class="text-white font-extrabold text-xs tracking-[0.2em] uppercase">ABUJA<span class="text-gray-400 font-light">CARS</span></span>
+        <span class="text-white font-extrabold text-xs tracking-[0.2em] uppercase">ABUJACAR<span class="text-gray-400 font-light"></span></span>
       </div>
       <button id="closeMenuBtn" class="text-gray-400 hover:text-white p-2 -mr-2" aria-label="Close Menu">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
       </button>
     </div>
     <nav class="flex flex-col gap-1">
-      <a href="index.html" class="text-gray-400 hover:text-white font-medium text-sm py-3 px-3 rounded-xl hover:bg-white/5 transition">Home</a>
-      <a href="inventory.html" class="text-gray-400 hover:text-white font-medium text-sm py-3 px-3 rounded-xl hover:bg-white/5 transition">Inventory</a>
+      <a href="index.html" class="text-gray-400 hover:text-white font-medium text-sm py-3 px-3 hover:bg-white/5 transition">Home</a>
+      <a href="inventory.html" class="text-gray-400 hover:text-white font-medium text-sm py-3 px-3 hover:bg-white/5 transition">Inventory</a>
       <div class="py-1">
-        <button id="mobileServicesToggle" class="flex items-center justify-between w-full text-gray-400 hover:text-white font-medium text-sm py-3 px-3 rounded-xl hover:bg-white/5 transition">
+        <button id="mobileServicesToggle" class="flex items-center justify-between w-full text-white font-medium text-sm py-3 px-3 rounded-xl hover:bg-white/5 transition">
           <span>Services</span>
           <svg class="w-4 h-4 transition-transform duration-300" id="mobileServicesChevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </button>
-        <div id="mobileServicesDropdown" class="hidden pl-4 mt-1 space-y-0.5 border-l-2 border-porsche-accent/30 ml-3">
+        <div id="mobileServicesDropdown" class="pl-4 mt-1 space-y-0.5 border-l-2 border-porsche-accent/30 ml-3">
           <a href="acquire-vehicle.html" class="block text-gray-500 hover:text-white text-xs py-2.5 px-3 rounded-lg hover:bg-white/5 transition">Acquire Vehicle</a>
           <a href="consign-vehicle.html" class="block text-gray-500 hover:text-white text-xs py-2.5 px-3 rounded-lg hover:bg-white/5 transition">Consign Vehicle</a>
+          <a href="THYILIEER.html" class="block text-gray-500 hover:text-white text-xs py-2.5 px-3 rounded-lg hover:bg-white/5 transition">THYILIEER -  Repairs • Servicing • OEM Parts
+Diagnostics </a>
         </div>
       </div>
-      <a href="about.html" class="text-white font-medium text-sm py-3 px-3 rounded-xl hover:bg-white/5 transition bg-white/5">About Us</a>
-      <a href="services.html" class="text-gray-400 hover:text-white font-medium text-sm py-3 px-3 rounded-xl hover:bg-white/5 transition">Services</a>
+      <a href="about.html" class="text-gray-400 hover:text-white font-medium text-sm py-3 px-3 rounded-xl hover:bg-white/5 transition">About Us</a>
+      <a href="services.html" class="text-white font-medium text-sm py-3 px-3 rounded-xl hover:bg-white/5 transition">Services</a>
       <a href="contact.html" class="text-gray-400 hover:text-white font-medium text-sm py-3 px-3 rounded-xl hover:bg-white/5 transition">Contact</a>
       <a href="sell-with-us.html" class="mt-4 bg-white text-black hover:bg-gray-200 font-bold text-xs uppercase tracking-widest py-3.5 px-4 rounded-xl text-center transition">Sell With Us</a>
     </nav>
   </div>
 
-  <!-- HEADER / HERO -->
-  <header class="relative w-full min-h-[60vh] sm:min-h-[70vh] bg-porsche-black flex flex-col justify-between overflow-hidden">
-    <div class="absolute inset-0 z-0 w-full h-full hero-about">
-      <div class="absolute inset-0 bg-gradient-to-b from-porsche-black/95 via-porsche-black/70 to-porsche-black/95"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-porsche-black/60 to-porsche-black"></div>
-      <!-- Animated orbs -->
-      <div class="absolute top-20 right-10 w-72 h-72 bg-porsche-accent/5 rounded-full blur-3xl animate-pulse"></div>
-      <div class="absolute bottom-20 left-10 w-96 h-96 bg-porsche-gold/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+  <!-- HEADER (simplified hero) -->
+  <header class="relative w-full min-h-screen bg-porsche-black flex flex-col justify-between overflow-hidden">
+    <div class="absolute inset-0 z-0 w-full h-full hero-fallback">
+      <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-50 contrast-110" poster="P (19).jpg">
+        <source src="P (1).mp4" type="video/mp4">
+        <img src="P (19).jpg" alt="AbujaCar Services" class="w-full h-full object-cover" onerror="this.style.display='none'"/>
+      </video>
+      <div class="absolute inset-0 bg-gradient-to-b from-porsche-black/95 via-porsche-black/60 to-porsche-black/90"></div>
     </div>
 
-    <!-- NAVBAR -->
+    <!-- NAVBAR (identical to home) -->
     <div class="relative z-30 w-full pt-4 px-3 sm:px-8 animate-[slideInDown_0.8s_ease-out]">
-      <nav class="max-w-7xl mx-auto porsche-glass rounded-full px-3 sm:px-6 py-2 sm:py-3.5 flex items-center justify-between border-white/5 hover:border-white/10 transition-all">
+      <nav class="max-w-7xl mx-auto porsche-glass rounded-full px-3 sm:px-6 py-2 sm:py-3.5 flex items-center justify-between opacity-0 animate-[fadeIn_1.2s_ease-out_0.2s_forwards]">
         <a href="index.html" class="flex items-center gap-2 sm:gap-3.5 group flex-shrink-0">
-          <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-full overflow-hidden p-0.5 bg-black/40 border border-white/20 group-hover:border-porsche-accent transition-all group-hover:shadow-lg group-hover:shadow-porsche-accent/20 flex items-center justify-center">
-            <img src="logo.jpeg" alt="Abuja Cars" class="w-full h-full object-cover rounded-full" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'text-white text-xs sm:text-sm font-bold\'>AC</span>'"/>
+          <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-full overflow-hidden p-0.5 bg-black/40 border border-white/20 group-hover:border-porsche-accent transition-colors flex items-center justify-center">
+            <img src="logo.jpeg" alt="AbujaCar" class="w-full h-full object-cover rounded-full" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'text-white text-xs sm:text-sm font-bold\'>Ac</span>'"/>
           </div>
           <span class="font-light text-[10px] sm:text-sm tracking-[0.1em] sm:tracking-[0.2em] text-white uppercase whitespace-nowrap">
-            ABUJA<span class="text-gray-500 font-extralight">CARS</span>
+            Abuja<span class="text-gray-500 font-extralight">car</span>
           </span>
         </a>
         <ul class="hidden lg:flex items-center space-x-10 text-xs font-light uppercase tracking-[0.2em] text-gray-400">
-          <li><a href="index.html" class="hover:text-white transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-porsche-accent hover:after:w-full after:transition-all">Home</a></li>
-          <li><a href="inventory.html" class="hover:text-white transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-porsche-accent hover:after:w-full after:transition-all">Inventory</a></li>
+          <li><a href="index.html" class="hover:text-white transition-colors py-1">Home</a></li>
+          <li><a href="inventory.html" class="hover:text-white transition-colors py-1">Inventory</a></li>
           <li class="relative group">
             <button class="flex items-center gap-1.5 hover:text-white transition-colors focus:outline-none py-1">
+              <span>Brands</span>
+              <svg class="w-3 h-3 text-gray-400 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-56 porsche-glass rounded-2xl p-2 hidden group-hover:block transition-all border border-white/10 shadow-2xl">
+              <a href="lamborghini.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Lamborghini</a>
+              <a href="tesla.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Tesla</a>
+              <a href="rolls-royce.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Rolls-Royce</a>
+              <a href="mercedes-benz.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Mercedes-Benz</a>
+              <a href="ferrari.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Ferrari</a>
+              <a href="bmw.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Bmw</a>
+              <a href="range-rover.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Range Rover</a>
+              <a href="toyota.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Toyota</a>
+              <div class="border-t border-white/10 mt-2 pt-2">
+                <a href="inventory.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-porsche-accent hover:text-white hover:bg-white/10 rounded-xl transition font-semibold">View All Inventory</a>
+              </div>
+            </div>
+          </li>
+          <li class="relative group">
+            <button class="flex items-center gap-1.5 text-white transition-colors focus:outline-none py-1">
               <span>Services</span>
               <svg class="w-3 h-3 text-gray-400 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
-            <div class="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-48 porsche-glass rounded-2xl p-2 hidden group-hover:block transition-all border border-white/10 shadow-2xl">
+            <div class="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 porsche-glass rounded-2xl p-2 hidden group-hover:block transition-all border border-white/10 shadow-2xl">
               <a href="acquire-vehicle.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Acquire Vehicle</a>
               <a href="consign-vehicle.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Consign Vehicle</a>
+              <a href="THYILIEER.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Repairs &amp; Servicing</a>
+              <a href="cafe.html" class="block px-4 py-2.5 text-[11px] font-light uppercase tracking-wider text-gray-400 hover:text-white hover:bg-white/10 rounded-xl transition">Cafe By AbujaCar</a>
             </div>
           </li>
-          <li><a href="about.html" class="text-white relative py-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-porsche-accent">About</a></li>
-          <li><a href="services.html" class="hover:text-white transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-porsche-accent hover:after:w-full after:transition-all">Services</a></li>
-          <li><a href="contact.html" class="hover:text-white transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-porsche-accent hover:after:w-full after:transition-all">Contact</a></li>
+          <li><a href="about.html" class="hover:text-white transition-colors py-1">About Us</a></li>
+          <li><a href="contact.html" class="hover:text-white transition-colors py-1">Contact</a></li>
         </ul>
         <div class="flex items-center space-x-2 sm:space-x-4">
-          <a href="sell-with-us.html" class="btn-porsche bg-white text-black hover:bg-gray-200 font-light px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-full text-[9px] sm:text-xs uppercase tracking-widest transition hidden sm:inline-block hover:shadow-lg hover:shadow-white/20">
+          <a href="sell-with-us.html" class="btn-porsche bg-white text-black hover:bg-gray-200 font-light px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-full text-[9px] sm:text-xs uppercase tracking-widest transition hidden sm:inline-block">
             Sell With Us
           </a>
           <button id="menu-btn" class="lg:hidden text-white p-2 rounded-full hover:bg-white/10 transition flex-shrink-0" aria-label="Open Menu">
@@ -369,7 +354,17 @@
       </nav>
     </div>
 
-   
+    <div class="relative z-10 flex flex-1 items-center px-4 sm:px-8 py-20 sm:py-28">
+      <div class="max-w-7xl mx-auto w-full">
+        <div class="max-w-3xl scroll-reveal active">
+          <span class="text-porsche-accent text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em]">About AbujaCar</span>
+          <h1 class="mt-4 text-4xl sm:text-6xl lg:text-8xl font-black uppercase tracking-[-0.06em] leading-[.92] text-white">Driven by <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-porsche-accent">Trust.</span></h1>
+          <p class="mt-6 max-w-xl text-sm sm:text-lg leading-relaxed text-gray-300">A modern automotive experience built around exceptional vehicles, honest guidance, and service that goes further.</p>
+          <a href="#story" class="btn-porsche mt-8 inline-flex items-center rounded-full bg-white px-6 py-3 text-xs font-bold uppercase tracking-widest text-black hover:bg-porsche-accent hover:text-white">Discover Our Story <span class="ml-3">↓</span></a>
+        </div>
+      </div>
+    </div>
+  </header>
 
   <!-- OUR STORY -->
   <section id="story" class="py-16 sm:py-24 px-4 sm:px-8 max-w-7xl mx-auto">
@@ -402,7 +397,7 @@
       </div>
       <div class="order-1 lg:order-2 scroll-reveal">
         <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
-          <img src="K (2).jpg" alt="Abuja Cars Showroom" class="w-full h-72 sm:h-96 object-cover object-center transition-transform duration-500 group-hover:scale-110" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'w-full h-72 sm:h-96 flex items-center justify-center bg-gradient-to-br from-porsche-black to-neutral-900 rounded-2xl\'><span class=\'text-4xl sm:text-6xl opacity-20\'>🏢</span></div>'"/>
+          <img src="z3.jfif" alt="Abuja Cars Showroom" class="w-full h-72 sm:h-96 object-cover object-center transition-transform duration-500 group-hover:scale-110" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'w-full h-72 sm:h-96 flex items-center justify-center bg-gradient-to-br from-porsche-black to-neutral-900 rounded-2xl\'><span class=\'text-4xl sm:text-6xl opacity-20\'>🏢</span></div>'"/>
           <div class="absolute inset-0 bg-gradient-to-t from-porsche-black/60 via-transparent to-transparent group-hover:from-porsche-accent/20 transition-all duration-500"></div>
           <div class="absolute bottom-4 left-4 right-4">
             <span class="inline-block bg-porsche-accent/90 hover:bg-porsche-accent text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full transition-all hover:shadow-lg hover:shadow-porsche-accent/50">Since 2018</span>
