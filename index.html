@@ -253,7 +253,7 @@
     .brand-grid-item {
       overflow: hidden;
       position: relative;
-      height: 20rem;
+      height: 20rem; /* desktop height — unchanged */
       min-height: 180px;
     }
 
@@ -268,52 +268,75 @@
       .porsche-card:hover .card-img-container img {
         transform: scale(1.04);
       }
-      /* Larger images on mobile */
+
+      /* ↓↓↓ REDUCED CURATED BRAND CONTAINER SIZE (MOBILE ONLY) ↓↓↓ */
       .brand-grid-item {
-        height: 48vh !important;
-        min-height: 220px;
-        max-height: 360px;
+        height: 150px !important;      /* was 48vh — much smaller */
+        min-height: 150px;
+        max-height: 150px;
       }
+
+      /* Featured / card image containers (unchanged on mobile) */
       .featured-card-img,
       .card-img-container {
         height: 50vh !important;
         min-height: 260px;
         max-height: 400px;
       }
+
       /* Adjust spacing for mobile */
       .porsche-card {
-        border-radius: 14px;
+        border-radius: 12px;
       }
+
       /* Text scaling */
       h1 { font-size: 2.2rem !important; line-height: 1.2 !important; }
       h2 { font-size: 1.8rem !important; }
+
       /* Hero min-height for mobile */
       header {
         min-height: 100svh;
         min-height: 100vh;
       }
+
       /* Search input touch friendly */
       input {
-        font-size: 16px !important; /* Prevent zoom on focus in iOS */
+        font-size: 16px !important;
       }
+
       /* Buttons larger tap targets */
       .btn-porsche, button, a {
         -webkit-tap-highlight-color: transparent;
       }
+
       /* Grid gap tighter on mobile */
-      .gap-3 { gap: 0.6rem !important; }
-      .gap-4 { gap: 0.8rem !important; }
+      .gap-3 { gap: 0.5rem !important; }
+      .gap-4 { gap: 0.75rem !important; }
+
+      /* Scale down brand label text so it fits the smaller card */
+      .brand-grid-item h3 {
+        font-size: 0.75rem !important;   /* was text-sm */
+        line-height: 1rem !important;
+      }
+      .brand-grid-item .text-\[7px\] {
+        font-size: 6px !important;
+      }
+      .brand-grid-item .absolute.bottom-3 {
+        bottom: 0.5rem !important;
+        left: 0.6rem !important;
+        right: 0.6rem !important;
+      }
     }
 
-    /* Small phones */
+    /* Extra-small phones */
     @media (max-width: 380px) {
       .brand-grid-item {
-        height: 38vh !important;
-        min-height: 170px;
+        height: 130px !important;
+        min-height: 130px;
+        max-height: 130px;
       }
-      .card-img-container {
-        height: 40vh !important;
-        min-height: 200px;
+      .brand-grid-item h3 {
+        font-size: 0.65rem !important;
       }
     }
 
