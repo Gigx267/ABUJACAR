@@ -14,27 +14,31 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
 
- <script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: { sans: ['"Inter"', 'sans-serif'] },
-        colors: {
-          porsche: {
-            black: '#0E0E11',
-            dark: '#141418',
-            card: '#1A1A20',
-            border: '#2A2A35',
-            accent: '#0066FF',
-            gold: '#4A90E2',
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', 'sans-serif'],
+            display: ['"Playfair Display"', 'serif'],
+            mono: ['"Space Grotesk"', 'monospace'],
+          },
+          colors: {
+            porsche: {
+              black: '#0E0E11',
+              dark: '#141418',
+              card: '#1A1A20',
+              border: '#2A2A35',
+              accent: '#0066FF',
+              gold: '#4A90E2',
+            }
           }
-        }
+        },
       },
-    },
-  }
-</script>
+    }
+  </script>
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -142,37 +146,8 @@
     .mobile-menu a:nth-child(7) { animation-delay: 0.35s; }
     .mobile-menu a:nth-child(8) { animation-delay: 0.40s; }
 
-    @media (max-width: 640px) {
-      .porsche-card:hover {
-        transform: translateY(-2px);
-      }
-      .card-img-container {
-        height: 55vh !important;
-        min-height: 280px;
-      }
-    }
-
     body.menu-open {
       overflow: hidden;
-    }
-
-    .img-placeholder {
-      background: linear-gradient(135deg, #1a1a24 0%, #0E0E11 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #2A2A35;
-      font-size: 14px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 600;
-      position: relative;
-    }
-    .img-placeholder::after {
-      content: '🚗';
-      font-size: 48px;
-      opacity: 0.3;
-      position: absolute;
     }
 
     .hero-inventory {
@@ -194,10 +169,12 @@
       pointer-events: none;
     }
 
+    /* Image container — BIGGER */
     .card-img-container {
       width: 100%;
       height: 100%;
       overflow: hidden;
+      position: relative;
     }
     .card-img-container img {
       width: 100%;
@@ -224,6 +201,7 @@
       cursor: pointer;
       transition: all 0.3s ease;
       white-space: nowrap;
+      user-select: none;
     }
     .filter-chip:hover {
       background: rgba(255,255,255,0.1);
@@ -244,6 +222,216 @@
     }
     .filter-scroll::-webkit-scrollbar {
       display: none;
+    }
+
+    /* Image gallery / slides */
+    .gallery-thumbs {
+      display: flex;
+      gap: 5px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .gallery-thumb {
+      width: 42px;
+      height: 32px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.2s, opacity 0.2s, transform 0.2s;
+      background: #1A1A20;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: #777;
+      font-weight: 700;
+      user-select: none;
+    }
+    .gallery-thumb.active {
+      border-color: #0066FF;
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    .gallery-thumb:not(.active) {
+      opacity: 0.55;
+    }
+    .gallery-thumb:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Card content area */
+    .card-content {
+      background: #141418;
+      border-top: none;
+      transition: background 0.3s;
+    }
+
+    /* No results message */
+    .no-results {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+      color: #6B7280;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+    .no-results.visible {
+      display: block;
+    }
+
+    /* Specs grid — refined */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .spec-item {
+      background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .spec-item:hover {
+      border-color: rgba(0, 102, 255, 0.3);
+      background: rgba(0, 102, 255, 0.05);
+    }
+    .spec-label {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 8px;
+      text-transform: uppercase;
+      color: #6B7280;
+      letter-spacing: 0.12em;
+      font-weight: 500;
+    }
+    .spec-value {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: #E5E7EB;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      letter-spacing: -0.01em;
+    }
+
+    /* Cool price styling */
+    .price-display {
+      font-family: 'Space Grotesk', monospace;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      background: linear-gradient(135deg, #FFFFFF 0%, #A0B4D0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .price-currency {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 0.65em;
+      font-weight: 500;
+      color: #0066FF;
+      -webkit-text-fill-color: #0066FF;
+      margin-right: 2px;
+      letter-spacing: 0;
+    }
+
+    /* Description font */
+    .car-description {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      line-height: 1.65;
+      font-weight: 300;
+      color: #9CA3AF;
+      letter-spacing: 0.01em;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Model name styling */
+    .model-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #FFFFFF 0%, #D1D5DB 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Make label */
+    .make-label {
+      font-family: 'Space Grotesk', monospace;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      color: #0066FF;
+    }
+
+    /* Inquire button refined */
+    .inquire-btn {
+      font-family: 'Space Grotesk', monospace;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      background: linear-gradient(135deg, #0066FF 0%, #0044CC 100%);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .inquire-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+    .inquire-btn:hover::after {
+      transform: translateX(100%);
+    }
+    .inquire-btn:hover {
+      background: linear-gradient(135deg, #FFFFFF 0%, #E5E7EB 100%);
+      color: #000;
+      box-shadow: 0 0 20px rgba(0, 102, 255, 0.4);
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 640px) {
+      .porsche-card:hover {
+        transform: translateY(-2px);
+      }
+      .car-description {
+        font-size: 11px;
+        -webkit-line-clamp: 3;
+      }
+      .spec-value { font-size: 10px; }
+      .spec-label { font-size: 7px; }
+      .spec-item { padding: 6px 8px; }
+      .gallery-thumb {
+        width: 36px;
+        height: 28px;
+      }
+    }
+    @media (min-width: 640px) {
+      .spec-value { font-size: 12px; }
+      .spec-label { font-size: 8px; }
+      .spec-item { padding: 9px 11px; }
+      .car-description { font-size: 12px; }
     }
   </style>
 </head>
@@ -362,347 +550,47 @@
     <!-- Search & Filter Bar -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
       <div class="relative w-full sm:max-w-md">
-        <input type="text" placeholder="Search by make, model, or keyword..." class="w-full bg-porsche-dark/80 text-white placeholder-gray-500 text-xs sm:text-sm font-light rounded-full px-4 sm:px-5 py-2.5 sm:py-3 pr-10 border border-white/15 focus:outline-none focus:border-white/40 focus:bg-porsche-dark/95 transition-all tracking-wide"/>
-        <button class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white p-1.5">
+        <input type="text" id="searchInput" placeholder="Search by make, model, or keyword..." class="w-full bg-porsche-dark/80 text-white placeholder-gray-500 text-xs sm:text-sm font-light rounded-full px-4 sm:px-5 py-2.5 sm:py-3 pr-10 border border-white/15 focus:outline-none focus:border-white/40 focus:bg-porsche-dark/95 transition-all tracking-wide"/>
+        <button class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white p-1.5" id="searchButton">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
         </button>
       </div>
       <div class="flex items-center gap-2 text-[10px] text-gray-500 font-mono uppercase tracking-wider">
         <span class="hidden sm:inline">Showing</span>
-        <span class="text-white font-bold">12</span>
+        <span class="text-white font-bold" id="visibleCount">12</span>
         <span>vehicles</span>
       </div>
     </div>
 
     <!-- Filter Chips (scrollable on mobile) -->
-    <div class="filter-scroll mb-8 sm:mb-10 -mx-1 px-1">
-      <span class="filter-chip active">All</span>
-      <span class="filter-chip">Lamborghini</span>
-      <span class="filter-chip">Tesla</span>
-      <span class="filter-chip">Mercedes-AMG</span>
-      <span class="filter-chip">Rolls-Royce</span>
-      <span class="filter-chip">Electric</span>
-      <span class="filter-chip">Hybrid</span>
-      <span class="filter-chip">SUV</span>
-      <span class="filter-chip">Supercar</span>
-      <span class="filter-chip">Luxury</span>
-      <span class="filter-chip">Under ₦100M</span>
-      <span class="filter-chip">New Arrivals</span>
+    <div class="filter-scroll mb-8 sm:mb-10 -mx-1 px-1" id="filterChips">
+      <span class="filter-chip active" data-filter="all">All</span>
+      <span class="filter-chip" data-filter="Lamborghini">Lamborghini</span>
+      <span class="filter-chip" data-filter="Tesla">Tesla</span>
+      <span class="filter-chip" data-filter="Mercedes-AMG">Mercedes-AMG</span>
+      <span class="filter-chip" data-filter="Rolls-Royce">Rolls-Royce</span>
+      <span class="filter-chip" data-filter="Electric">Electric</span>
+      <span class="filter-chip" data-filter="Hybrid">Hybrid</span>
+      <span class="filter-chip" data-filter="SUV">SUV</span>
+      <span class="filter-chip" data-filter="Supercar">Supercar</span>
+      <span class="filter-chip" data-filter="Luxury">Luxury</span>
+      <span class="filter-chip" data-filter="Under100M">Under ₦100M</span>
+      <span class="filter-chip" data-filter="NewArrivals">New Arrivals</span>
     </div>
 
     <!-- GRID -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7">
-
-      <!-- Card 1 - Lamborghini Revuelto -->
-      <div class="porsche-card group relative bg-neutral-950 rounded-2xl overflow-hidden border border-white/10 hover:border-porsche-accent/50 transition-all duration-500 flex flex-col justify-between shadow-2xl hover:shadow-[0_0_30px_rgba(255,50,0,0.12)]">
-        <div class="relative w-full overflow-hidden bg-black card-img-container" style="height: 280px;">
-          <img src="P (37).jpg" alt="Lamborghini Revuelto" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-gradient-to-br from-porsche-black to-neutral-900\'><span class=\'text-4xl sm:text-6xl opacity-20\'>🏎️</span></div>'"/>
-          <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-black/40"></div>
-          <div class="absolute top-3 left-3 right-3 flex justify-between items-center z-10">
-            <span class="bg-black/60 backdrop-blur-md border border-white/10 text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-mono uppercase tracking-widest">ID: REV-2024</span>
-            <span class="bg-porsche-accent text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-black uppercase tracking-wider shadow-lg">Featured</span>
-          </div>
-          <div class="absolute bottom-3 left-3 right-3 z-20 flex items-center justify-between bg-black/60 backdrop-blur-md p-1 rounded-xl border border-white/10 opacity-90 group-hover:opacity-100 transition-opacity">
-            <span class="text-[8px] font-mono uppercase text-gray-400 pl-2 hidden sm:inline">Angles:</span>
-            <div class="flex items-center gap-1 w-full sm:w-auto justify-end">
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border-2 border-porsche-accent bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">1</div>
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border border-white/20 bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">2</div>
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border border-white/20 bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">3</div>
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border border-white/20 bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">4</div>
-            </div>
-          </div>
-        </div>
-        <div class="p-4 sm:p-5 -mt-4 relative z-20 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex flex-wrap justify-between items-baseline mb-1 gap-1">
-              <p class="text-porsche-accent text-[10px] font-mono uppercase tracking-[0.2em]">Lamborghini</p>
-              <p class="text-gray-400 text-[8px] sm:text-[10px] font-mono">1,200 KM • AUTOMATIC</p>
-            </div>
-            <h3 class="text-lg sm:text-2xl font-black text-white uppercase tracking-wide mb-2 sm:mb-3">Revuelto V12</h3>
-            <div class="grid grid-cols-2 gap-1.5 mb-3">
-              <div class="bg-white/[0.03] border border-white/5 rounded-lg p-1.5 sm:p-2"><span class="text-gray-500 text-[7px] font-mono uppercase block">Powertrain</span><span class="text-white text-[9px] sm:text-xs font-bold">6.5L V12 + 3 Electric</span></div>
-              <div class="bg-white/[0.03] border border-white/5 rounded-lg p-1.5 sm:p-2"><span class="text-gray-500 text-[7px] font-mono uppercase block">Output</span><span class="text-white text-[9px] sm:text-xs font-bold">1,001 HP</span></div>
-            </div>
-            <p class="text-gray-400 text-[10px] leading-relaxed mb-3 line-clamp-2">The first HPEV hybrid super sports car. Carbon-fiber chassis and active aerodynamics.</p>
-          </div>
-          <div class="pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-2">
-            <div><span class="text-gray-500 text-[8px] font-mono uppercase block">Price</span><span class="text-base sm:text-xl font-black text-white tracking-tight">₦285,000,000</span></div>
-            <button class="bg-porsche-accent hover:bg-white hover:text-black text-white font-bold text-[10px] uppercase tracking-wider px-4 py-2 sm:py-2 rounded-xl transition-all duration-300 transform active:scale-95 shadow-lg">Inquire</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2 - Tesla Model S Plaid -->
-      <div class="porsche-card group relative bg-neutral-950 rounded-2xl overflow-hidden border border-white/10 hover:border-porsche-accent/50 transition-all duration-500 flex flex-col justify-between shadow-2xl hover:shadow-[0_0_30px_rgba(255,50,0,0.12)]">
-        <div class="relative w-full overflow-hidden bg-black card-img-container" style="height: 280px;">
-          <img src="P (14).jpg" alt="Tesla Model S Plaid" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-gradient-to-br from-porsche-black to-neutral-900\'><span class=\'text-4xl sm:text-6xl opacity-20\'>⚡</span></div>'"/>
-          <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-black/40"></div>
-          <div class="absolute top-3 left-3 right-3 flex justify-between items-center z-10">
-            <span class="bg-black/60 backdrop-blur-md border border-white/10 text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-mono uppercase tracking-widest">ID: PLAID-2024</span>
-            <span class="bg-porsche-accent text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-black uppercase tracking-wider shadow-lg">New</span>
-          </div>
-          <div class="absolute bottom-3 left-3 right-3 z-20 flex items-center justify-between bg-black/60 backdrop-blur-md p-1 rounded-xl border border-white/10 opacity-90 group-hover:opacity-100 transition-opacity">
-            <span class="text-[8px] font-mono uppercase text-gray-400 pl-2 hidden sm:inline">Angles:</span>
-            <div class="flex items-center gap-1 w-full sm:w-auto justify-end">
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border-2 border-porsche-accent bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">1</div>
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border border-white/20 bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">2</div>
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border border-white/20 bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">3</div>
-            </div>
-          </div>
-        </div>
-        <div class="p-4 sm:p-5 -mt-4 relative z-20 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex flex-wrap justify-between items-baseline mb-1 gap-1">
-              <p class="text-porsche-accent text-[10px] font-mono uppercase tracking-[0.2em]">Tesla</p>
-              <p class="text-gray-400 text-[8px] sm:text-[10px] font-mono">0 KM • ELECTRIC</p>
-            </div>
-            <h3 class="text-lg sm:text-2xl font-black text-white uppercase tracking-wide mb-2 sm:mb-3">Model S Plaid</h3>
-            <div class="grid grid-cols-2 gap-1.5 mb-3">
-              <div class="bg-white/[0.03] border border-white/5 rounded-lg p-1.5 sm:p-2"><span class="text-gray-500 text-[7px] font-mono uppercase block">Drivetrain</span><span class="text-white text-[9px] sm:text-xs font-bold">Tri-Motor AWD</span></div>
-              <div class="bg-white/[0.03] border border-white/5 rounded-lg p-1.5 sm:p-2"><span class="text-gray-500 text-[7px] font-mono uppercase block">Output</span><span class="text-white text-[9px] sm:text-xs font-bold">1,020 HP</span></div>
-            </div>
-            <p class="text-gray-400 text-[10px] leading-relaxed mb-3 line-clamp-2">Unrivaled electric performance with torque vectoring and full self-driving capability.</p>
-          </div>
-          <div class="pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-2">
-            <div><span class="text-gray-500 text-[8px] font-mono uppercase block">Price</span><span class="text-base sm:text-xl font-black text-white tracking-tight">₦95,000,000</span></div>
-            <button class="bg-porsche-accent hover:bg-white hover:text-black text-white font-bold text-[10px] uppercase tracking-wider px-4 py-2 sm:py-2 rounded-xl transition-all duration-300 transform active:scale-95 shadow-lg">Inquire</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3 - Mercedes-AMG G63 -->
-      <div class="porsche-card group relative bg-neutral-950 rounded-2xl overflow-hidden border border-white/10 hover:border-porsche-accent/50 transition-all duration-500 flex flex-col justify-between shadow-2xl hover:shadow-[0_0_30px_rgba(255,50,0,0.12)]">
-        <div class="relative w-full overflow-hidden bg-black card-img-container" style="height: 280px;">
-          <img src="P (38).jpg" alt="Mercedes-AMG G63" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-gradient-to-br from-porsche-black to-neutral-900\'><span class=\'text-4xl sm:text-6xl opacity-20\'>🚙</span></div>'"/>
-          <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-black/40"></div>
-          <div class="absolute top-3 left-3 right-3 flex justify-between items-center z-10">
-            <span class="bg-black/60 backdrop-blur-md border border-white/10 text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-mono uppercase tracking-widest">ID: G63-2024</span>
-            <span class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-bold uppercase tracking-wider">In Stock</span>
-          </div>
-          <div class="absolute bottom-3 left-3 right-3 z-20 flex items-center justify-between bg-black/60 backdrop-blur-md p-1 rounded-xl border border-white/10 opacity-90 group-hover:opacity-100 transition-opacity">
-            <span class="text-[8px] font-mono uppercase text-gray-400 pl-2 hidden sm:inline">Angles:</span>
-            <div class="flex items-center gap-1 w-full sm:w-auto justify-end">
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border-2 border-porsche-accent bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">1</div>
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border border-white/20 bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">2</div>
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border border-white/20 bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">3</div>
-            </div>
-          </div>
-        </div>
-        <div class="p-4 sm:p-5 -mt-4 relative z-20 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex flex-wrap justify-between items-baseline mb-1 gap-1">
-              <p class="text-porsche-accent text-[10px] font-mono uppercase tracking-[0.2em]">Mercedes-AMG</p>
-              <p class="text-gray-400 text-[8px] sm:text-[10px] font-mono">4,500 KM • AUTOMATIC</p>
-            </div>
-            <h3 class="text-lg sm:text-2xl font-black text-white uppercase tracking-wide mb-2 sm:mb-3">G63 SUV</h3>
-            <div class="grid grid-cols-2 gap-1.5 mb-3">
-              <div class="bg-white/[0.03] border border-white/5 rounded-lg p-1.5 sm:p-2"><span class="text-gray-500 text-[7px] font-mono uppercase block">Engine</span><span class="text-white text-[9px] sm:text-xs font-bold">4.0L V8 Biturbo</span></div>
-              <div class="bg-white/[0.03] border border-white/5 rounded-lg p-1.5 sm:p-2"><span class="text-gray-500 text-[7px] font-mono uppercase block">Output</span><span class="text-white text-[9px] sm:text-xs font-bold">577 HP</span></div>
-            </div>
-            <p class="text-gray-400 text-[10px] leading-relaxed mb-3 line-clamp-2">Ultimate luxury off-road icon with AMG Ride Control and hand-stitched leather interior.</p>
-          </div>
-          <div class="pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-2">
-            <div><span class="text-gray-500 text-[8px] font-mono uppercase block">Price</span><span class="text-base sm:text-xl font-black text-white tracking-tight">₦165,000,000</span></div>
-            <button class="bg-porsche-accent hover:bg-white hover:text-black text-white font-bold text-[10px] uppercase tracking-wider px-4 py-2 sm:py-2 rounded-xl transition-all duration-300 transform active:scale-95 shadow-lg">Inquire</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4 - Rolls-Royce Ghost -->
-      <div class="porsche-card group relative bg-neutral-950 rounded-2xl overflow-hidden border border-white/10 hover:border-porsche-accent/50 transition-all duration-500 flex flex-col justify-between shadow-2xl hover:shadow-[0_0_30px_rgba(255,50,0,0.12)]">
-        <div class="relative w-full overflow-hidden bg-black card-img-container" style="height: 280px;">
-          <img src="P (18).jpg" alt="Rolls-Royce Ghost" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-gradient-to-br from-porsche-black to-neutral-900\'><span class=\'text-4xl sm:text-6xl opacity-20\'>✨</span></div>'"/>
-          <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-black/40"></div>
-          <div class="absolute top-3 left-3 right-3 flex justify-between items-center z-10">
-            <span class="bg-black/60 backdrop-blur-md border border-white/10 text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-mono uppercase tracking-widest">ID: GHOST-2023</span>
-            <span class="bg-amber-500/80 text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-black uppercase tracking-wider shadow-lg">Luxury</span>
-          </div>
-          <div class="absolute bottom-3 left-3 right-3 z-20 flex items-center justify-between bg-black/60 backdrop-blur-md p-1 rounded-xl border border-white/10 opacity-90 group-hover:opacity-100 transition-opacity">
-            <span class="text-[8px] font-mono uppercase text-gray-400 pl-2 hidden sm:inline">Angles:</span>
-            <div class="flex items-center gap-1 w-full sm:w-auto justify-end">
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border-2 border-porsche-accent bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">1</div>
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border border-white/20 bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">2</div>
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border border-white/20 bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">3</div>
-            </div>
-          </div>
-        </div>
-        <div class="p-4 sm:p-5 -mt-4 relative z-20 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex flex-wrap justify-between items-baseline mb-1 gap-1">
-              <p class="text-porsche-accent text-[10px] font-mono uppercase tracking-[0.2em]">Rolls-Royce</p>
-              <p class="text-gray-400 text-[8px] sm:text-[10px] font-mono">8,200 KM • AUTOMATIC</p>
-            </div>
-            <h3 class="text-lg sm:text-2xl font-black text-white uppercase tracking-wide mb-2 sm:mb-3">Ghost Extended</h3>
-            <div class="grid grid-cols-2 gap-1.5 mb-3">
-              <div class="bg-white/[0.03] border border-white/5 rounded-lg p-1.5 sm:p-2"><span class="text-gray-500 text-[7px] font-mono uppercase block">Engine</span><span class="text-white text-[9px] sm:text-xs font-bold">6.75L V12</span></div>
-              <div class="bg-white/[0.03] border border-white/5 rounded-lg p-1.5 sm:p-2"><span class="text-gray-500 text-[7px] font-mono uppercase block">Output</span><span class="text-white text-[9px] sm:text-xs font-bold">563 HP</span></div>
-            </div>
-            <p class="text-gray-400 text-[10px] leading-relaxed mb-3 line-clamp-2">Handcrafted luxury sedan with bespoke interior, starlight headliner, and effortless performance.</p>
-          </div>
-          <div class="pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-2">
-            <div><span class="text-gray-500 text-[8px] font-mono uppercase block">Price</span><span class="text-base sm:text-xl font-black text-white tracking-tight">₦420,000,000</span></div>
-            <button class="bg-porsche-accent hover:bg-white hover:text-black text-white font-bold text-[10px] uppercase tracking-wider px-4 py-2 sm:py-2 rounded-xl transition-all duration-300 transform active:scale-95 shadow-lg">Inquire</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 5 - Lamborghini Urus -->
-      <div class="porsche-card group relative bg-neutral-950 rounded-2xl overflow-hidden border border-white/10 hover:border-porsche-accent/50 transition-all duration-500 flex flex-col justify-between shadow-2xl hover:shadow-[0_0_30px_rgba(255,50,0,0.12)]">
-        <div class="relative w-full overflow-hidden bg-black card-img-container" style="height: 280px;">
-          <img src="P (37).jpg" alt="Lamborghini Urus" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-gradient-to-br from-porsche-black to-neutral-900\'><span class=\'text-4xl sm:text-6xl opacity-20\'>🏎️</span></div>'"/>
-          <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-black/40"></div>
-          <div class="absolute top-3 left-3 right-3 flex justify-between items-center z-10">
-            <span class="bg-black/60 backdrop-blur-md border border-white/10 text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-mono uppercase tracking-widest">ID: URUS-2024</span>
-            <span class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-bold uppercase tracking-wider">SUV</span>
-          </div>
-          <div class="absolute bottom-3 left-3 right-3 z-20 flex items-center justify-between bg-black/60 backdrop-blur-md p-1 rounded-xl border border-white/10 opacity-90 group-hover:opacity-100 transition-opacity">
-            <span class="text-[8px] font-mono uppercase text-gray-400 pl-2 hidden sm:inline">Angles:</span>
-            <div class="flex items-center gap-1 w-full sm:w-auto justify-end">
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border-2 border-porsche-accent bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">1</div>
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border border-white/20 bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">2</div>
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border border-white/20 bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">3</div>
-            </div>
-          </div>
-        </div>
-        <div class="p-4 sm:p-5 -mt-4 relative z-20 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex flex-wrap justify-between items-baseline mb-1 gap-1">
-              <p class="text-porsche-accent text-[10px] font-mono uppercase tracking-[0.2em]">Lamborghini</p>
-              <p class="text-gray-400 text-[8px] sm:text-[10px] font-mono">3,100 KM • AUTOMATIC</p>
-            </div>
-            <h3 class="text-lg sm:text-2xl font-black text-white uppercase tracking-wide mb-2 sm:mb-3">Urus S</h3>
-            <div class="grid grid-cols-2 gap-1.5 mb-3">
-              <div class="bg-white/[0.03] border border-white/5 rounded-lg p-1.5 sm:p-2"><span class="text-gray-500 text-[7px] font-mono uppercase block">Engine</span><span class="text-white text-[9px] sm:text-xs font-bold">4.0L V8 Twin-Turbo</span></div>
-              <div class="bg-white/[0.03] border border-white/5 rounded-lg p-1.5 sm:p-2"><span class="text-gray-500 text-[7px] font-mono uppercase block">Output</span><span class="text-white text-[9px] sm:text-xs font-bold">657 HP</span></div>
-            </div>
-            <p class="text-gray-400 text-[10px] leading-relaxed mb-3 line-clamp-2">The world's first super SUV. Combines exceptional performance with luxury and everyday usability.</p>
-          </div>
-          <div class="pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-2">
-            <div><span class="text-gray-500 text-[8px] font-mono uppercase block">Price</span><span class="text-base sm:text-xl font-black text-white tracking-tight">₦175,000,000</span></div>
-            <button class="bg-porsche-accent hover:bg-white hover:text-black text-white font-bold text-[10px] uppercase tracking-wider px-4 py-2 sm:py-2 rounded-xl transition-all duration-300 transform active:scale-95 shadow-lg">Inquire</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 6 - Tesla Cybertruck -->
-      <div class="porsche-card group relative bg-neutral-950 rounded-2xl overflow-hidden border border-white/10 hover:border-porsche-accent/50 transition-all duration-500 flex flex-col justify-between shadow-2xl hover:shadow-[0_0_30px_rgba(255,50,0,0.12)]">
-        <div class="relative w-full overflow-hidden bg-black card-img-container" style="height: 280px;">
-          <img src="P (14).jpg" alt="Tesla Cybertruck" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-gradient-to-br from-porsche-black to-neutral-900\'><span class=\'text-4xl sm:text-6xl opacity-20\'>⚡</span></div>'"/>
-          <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-black/40"></div>
-          <div class="absolute top-3 left-3 right-3 flex justify-between items-center z-10">
-            <span class="bg-black/60 backdrop-blur-md border border-white/10 text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-mono uppercase tracking-widest">ID: CYBER-2024</span>
-            <span class="bg-porsche-accent text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-black uppercase tracking-wider shadow-lg">New</span>
-          </div>
-          <div class="absolute bottom-3 left-3 right-3 z-20 flex items-center justify-between bg-black/60 backdrop-blur-md p-1 rounded-xl border border-white/10 opacity-90 group-hover:opacity-100 transition-opacity">
-            <span class="text-[8px] font-mono uppercase text-gray-400 pl-2 hidden sm:inline">Angles:</span>
-            <div class="flex items-center gap-1 w-full sm:w-auto justify-end">
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border-2 border-porsche-accent bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">1</div>
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border border-white/20 bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">2</div>
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border border-white/20 bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">3</div>
-            </div>
-          </div>
-        </div>
-        <div class="p-4 sm:p-5 -mt-4 relative z-20 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex flex-wrap justify-between items-baseline mb-1 gap-1">
-              <p class="text-porsche-accent text-[10px] font-mono uppercase tracking-[0.2em]">Tesla</p>
-              <p class="text-gray-400 text-[8px] sm:text-[10px] font-mono">0 KM • ELECTRIC</p>
-            </div>
-            <h3 class="text-lg sm:text-2xl font-black text-white uppercase tracking-wide mb-2 sm:mb-3">Cybertruck AWD</h3>
-            <div class="grid grid-cols-2 gap-1.5 mb-3">
-              <div class="bg-white/[0.03] border border-white/5 rounded-lg p-1.5 sm:p-2"><span class="text-gray-500 text-[7px] font-mono uppercase block">Drivetrain</span><span class="text-white text-[9px] sm:text-xs font-bold">Tri-Motor AWD</span></div>
-              <div class="bg-white/[0.03] border border-white/5 rounded-lg p-1.5 sm:p-2"><span class="text-gray-500 text-[7px] font-mono uppercase block">Output</span><span class="text-white text-[9px] sm:text-xs font-bold">845 HP</span></div>
-            </div>
-            <p class="text-gray-400 text-[10px] leading-relaxed mb-3 line-clamp-2">Exoskeleton, armored glass, and unparalleled electric performance. The future of utility.</p>
-          </div>
-          <div class="pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-2">
-            <div><span class="text-gray-500 text-[8px] font-mono uppercase block">Price</span><span class="text-base sm:text-xl font-black text-white tracking-tight">₦120,000,000</span></div>
-            <button class="bg-porsche-accent hover:bg-white hover:text-black text-white font-bold text-[10px] uppercase tracking-wider px-4 py-2 sm:py-2 rounded-xl transition-all duration-300 transform active:scale-95 shadow-lg">Inquire</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 7 - Mercedes-AMG SL 63 -->
-      <div class="porsche-card group relative bg-neutral-950 rounded-2xl overflow-hidden border border-white/10 hover:border-porsche-accent/50 transition-all duration-500 flex flex-col justify-between shadow-2xl hover:shadow-[0_0_30px_rgba(255,50,0,0.12)]">
-        <div class="relative w-full overflow-hidden bg-black card-img-container" style="height: 280px;">
-          <img src="P (38).jpg" alt="Mercedes-AMG SL 63" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-gradient-to-br from-porsche-black to-neutral-900\'><span class=\'text-4xl sm:text-6xl opacity-20\'>🚙</span></div>'"/>
-          <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-black/40"></div>
-          <div class="absolute top-3 left-3 right-3 flex justify-between items-center z-10">
-            <span class="bg-black/60 backdrop-blur-md border border-white/10 text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-mono uppercase tracking-widest">ID: SL63-2024</span>
-            <span class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-bold uppercase tracking-wider">Roadster</span>
-          </div>
-          <div class="absolute bottom-3 left-3 right-3 z-20 flex items-center justify-between bg-black/60 backdrop-blur-md p-1 rounded-xl border border-white/10 opacity-90 group-hover:opacity-100 transition-opacity">
-            <span class="text-[8px] font-mono uppercase text-gray-400 pl-2 hidden sm:inline">Angles:</span>
-            <div class="flex items-center gap-1 w-full sm:w-auto justify-end">
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border-2 border-porsche-accent bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">1</div>
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border border-white/20 bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">2</div>
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border border-white/20 bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">3</div>
-            </div>
-          </div>
-        </div>
-        <div class="p-4 sm:p-5 -mt-4 relative z-20 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex flex-wrap justify-between items-baseline mb-1 gap-1">
-              <p class="text-porsche-accent text-[10px] font-mono uppercase tracking-[0.2em]">Mercedes-AMG</p>
-              <p class="text-gray-400 text-[8px] sm:text-[10px] font-mono">1,800 KM • AUTOMATIC</p>
-            </div>
-            <h3 class="text-lg sm:text-2xl font-black text-white uppercase tracking-wide mb-2 sm:mb-3">SL 63 4MATIC+</h3>
-            <div class="grid grid-cols-2 gap-1.5 mb-3">
-              <div class="bg-white/[0.03] border border-white/5 rounded-lg p-1.5 sm:p-2"><span class="text-gray-500 text-[7px] font-mono uppercase block">Engine</span><span class="text-white text-[9px] sm:text-xs font-bold">4.0L V8 Biturbo</span></div>
-              <div class="bg-white/[0.03] border border-white/5 rounded-lg p-1.5 sm:p-2"><span class="text-gray-500 text-[7px] font-mono uppercase block">Output</span><span class="text-white text-[9px] sm:text-xs font-bold">577 HP</span></div>
-            </div>
-            <p class="text-gray-400 text-[10px] leading-relaxed mb-3 line-clamp-2">Iconic roadster with AMG performance, lightweight composite construction, and active aerodynamics.</p>
-          </div>
-          <div class="pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-2">
-            <div><span class="text-gray-500 text-[8px] font-mono uppercase block">Price</span><span class="text-base sm:text-xl font-black text-white tracking-tight">₦145,000,000</span></div>
-            <button class="bg-porsche-accent hover:bg-white hover:text-black text-white font-bold text-[10px] uppercase tracking-wider px-4 py-2 sm:py-2 rounded-xl transition-all duration-300 transform active:scale-95 shadow-lg">Inquire</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 8 - Rolls-Royce Cullinan -->
-      <div class="porsche-card group relative bg-neutral-950 rounded-2xl overflow-hidden border border-white/10 hover:border-porsche-accent/50 transition-all duration-500 flex flex-col justify-between shadow-2xl hover:shadow-[0_0_30px_rgba(255,50,0,0.12)]">
-        <div class="relative w-full overflow-hidden bg-black card-img-container" style="height: 280px;">
-          <img src="P (18).jpg" alt="Rolls-Royce Cullinan" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-gradient-to-br from-porsche-black to-neutral-900\'><span class=\'text-4xl sm:text-6xl opacity-20\'>✨</span></div>'"/>
-          <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-black/40"></div>
-          <div class="absolute top-3 left-3 right-3 flex justify-between items-center z-10">
-            <span class="bg-black/60 backdrop-blur-md border border-white/10 text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-mono uppercase tracking-widest">ID: CULL-2023</span>
-            <span class="bg-amber-500/80 text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-black uppercase tracking-wider shadow-lg">Luxury</span>
-          </div>
-          <div class="absolute bottom-3 left-3 right-3 z-20 flex items-center justify-between bg-black/60 backdrop-blur-md p-1 rounded-xl border border-white/10 opacity-90 group-hover:opacity-100 transition-opacity">
-            <span class="text-[8px] font-mono uppercase text-gray-400 pl-2 hidden sm:inline">Angles:</span>
-            <div class="flex items-center gap-1 w-full sm:w-auto justify-end">
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border-2 border-porsche-accent bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">1</div>
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border border-white/20 bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">2</div>
-              <div class="relative h-7 w-9 sm:h-9 sm:w-12 rounded-lg overflow-hidden border border-white/20 bg-neutral-800 flex items-center justify-center text-[8px] text-gray-500">3</div>
-            </div>
-          </div>
-        </div>
-        <div class="p-4 sm:p-5 -mt-4 relative z-20 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex flex-wrap justify-between items-baseline mb-1 gap-1">
-              <p class="text-porsche-accent text-[10px] font-mono uppercase tracking-[0.2em]">Rolls-Royce</p>
-              <p class="text-gray-400 text-[8px] sm:text-[10px] font-mono">12,500 KM • AUTOMATIC</p>
-            </div>
-            <h3 class="text-lg sm:text-2xl font-black text-white uppercase tracking-wide mb-2 sm:mb-3">Cullinan SUV</h3>
-            <div class="grid grid-cols-2 gap-1.5 mb-3">
-              <div class="bg-white/[0.03] border border-white/5 rounded-lg p-1.5 sm:p-2"><span class="text-gray-500 text-[7px] font-mono uppercase block">Engine</span><span class="text-white text-[9px] sm:text-xs font-bold">6.75L V12</span></div>
-              <div class="bg-white/[0.03] border border-white/5 rounded-lg p-1.5 sm:p-2"><span class="text-gray-500 text-[7px] font-mono uppercase block">Output</span><span class="text-white text-[9px] sm:text-xs font-bold">563 HP</span></div>
-            </div>
-            <p class="text-gray-400 text-[10px] leading-relaxed mb-3 line-clamp-2">The ultimate luxury SUV. Handcrafted interior, all-terrain capability, and effortless elegance.</p>
-          </div>
-          <div class="pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-2">
-            <div><span class="text-gray-500 text-[8px] font-mono uppercase block">Price</span><span class="text-base sm:text-xl font-black text-white tracking-tight">₦550,000,000</span></div>
-            <button class="bg-porsche-accent hover:bg-white hover:text-black text-white font-bold text-[10px] uppercase tracking-wider px-4 py-2 sm:py-2 rounded-xl transition-all duration-300 transform active:scale-95 shadow-lg">Inquire</button>
-          </div>
-        </div>
-      </div>
-
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7" id="inventoryGrid">
+      <!-- Cards rendered by JS -->
     </div>
 
-    <!-- Load More -->
-    <div class="mt-10 sm:mt-14 text-center">
-      <button class="btn-porsche border border-white/20 text-white hover:bg-white/10 font-bold text-xs uppercase tracking-widest px-8 py-3.5 rounded-full transition">
+    <!-- No Results Message -->
+    <div class="no-results" id="noResults">
+      No vehicles match your search criteria.
+    </div>
+
+    <!-- Load More (placeholder, not functional) -->
+    <div class="mt-10 sm:mt-14 text-center" id="loadMoreContainer">
+      <button class="btn-porsche border border-white/20 text-white hover:bg-white/10 font-bold text-xs uppercase tracking-widest px-8 py-3.5 rounded-full transition" id="loadMoreBtn" disabled>
         Load More Vehicles
       </button>
     </div>
@@ -773,6 +661,369 @@
   </footer>
 
   <script>
+    // ── VEHICLE DATA ──────────────────────────────────────────────
+    const vehicles = [
+      {
+        id: 'rev-2024',
+        make: 'Lamborghini',
+        model: 'Revuelto V12',
+        price: 285000000,
+        priceLabel: '285,000,000',
+        year: 2024,
+        mileage: '1,200 KM',
+        transmission: 'Automatic',
+        fuel: 'Hybrid',
+        bodyType: 'Supercar',
+        tags: ['Hybrid', 'Supercar', 'Lamborghini'],
+        isNew: true,
+        featured: true,
+        description: 'The first HPEV hybrid super sports car. Carbon-fiber chassis and active aerodynamics.',
+        images: ['P (37).jpg', 'P (37).jpg', 'P (37).jpg', 'P (37).jpg'],
+        specs: [
+          { label: 'Powertrain', value: '6.5L V12 + 3 Electric' },
+          { label: 'Output', value: '1,001 HP' }
+        ]
+      },
+      {
+        id: 'plaid-2024',
+        make: 'Tesla',
+        model: 'Model S Plaid',
+        price: 95000000,
+        priceLabel: '95,000,000',
+        year: 2024,
+        mileage: '0 KM',
+        transmission: 'Automatic',
+        fuel: 'Electric',
+        bodyType: 'Sedan',
+        tags: ['Electric', 'Tesla', 'NewArrivals'],
+        isNew: true,
+        featured: false,
+        description: 'Unrivaled electric performance with torque vectoring and full self-driving capability.',
+        images: ['P (14).jpg', 'P (9).jpg', 'P (14).jpg'],
+        specs: [
+          { label: 'Drivetrain', value: 'Tri-Motor AWD' },
+          { label: 'Output', value: '1,020 HP' }
+        ]
+      },
+      {
+        id: 'g63-2024',
+        make: 'Mercedes-AMG',
+        model: 'G63 SUV',
+        price: 165000000,
+        priceLabel: '165,000,000',
+        year: 2024,
+        mileage: '4,500 KM',
+        transmission: 'Automatic',
+        fuel: 'Petrol',
+        bodyType: 'SUV',
+        tags: ['SUV', 'Mercedes-AMG'],
+        isNew: false,
+        featured: false,
+        description: 'Ultimate luxury off-road icon with AMG Ride Control and hand-stitched leather interior.',
+        images: ['P (38).jpg', 'P (38).jpg', 'P (38).jpg'],
+        specs: [
+          { label: 'Engine', value: '4.0L V8 Biturbo' },
+          { label: 'Output', value: '577 HP' }
+        ]
+      },
+      {
+        id: 'ghost-2023',
+        make: 'Rolls-Royce',
+        model: 'Ghost Extended',
+        price: 420000000,
+        priceLabel: '420,000,000',
+        year: 2023,
+        mileage: '8,200 KM',
+        transmission: 'Automatic',
+        fuel: 'Petrol',
+        bodyType: 'Sedan',
+        tags: ['Luxury', 'Rolls-Royce'],
+        isNew: false,
+        featured: false,
+        description: 'Handcrafted luxury sedan with bespoke interior, starlight headliner, and effortless performance.',
+        images: ['P (18).jpg', 'P (18).jpg', 'P (18).jpg'],
+        specs: [
+          { label: 'Engine', value: '6.75L V12' },
+          { label: 'Output', value: '563 HP' }
+        ]
+      },
+      {
+        id: 'urus-2024',
+        make: 'Lamborghini',
+        model: 'Urus S',
+        price: 175000000,
+        priceLabel: '175,000,000',
+        year: 2024,
+        mileage: '3,100 KM',
+        transmission: 'Automatic',
+        fuel: 'Petrol',
+        bodyType: 'SUV',
+        tags: ['SUV', 'Supercar', 'Lamborghini'],
+        isNew: false,
+        featured: false,
+        description: 'The world\'s first super SUV. Combines exceptional performance with luxury and everyday usability.',
+        images: ['P (37).jpg', 'P (37).jpg', 'P (37).jpg'],
+        specs: [
+          { label: 'Engine', value: '4.0L V8 Twin-Turbo' },
+          { label: 'Output', value: '657 HP' }
+        ]
+      },
+      {
+        id: 'cyber-2024',
+        make: 'Tesla',
+        model: 'Cybertruck AWD',
+        price: 120000000,
+        priceLabel: '120,000,000',
+        year: 2024,
+        mileage: '0 KM',
+        transmission: 'Automatic',
+        fuel: 'Electric',
+        bodyType: 'Truck',
+        tags: ['Electric', 'Tesla', 'NewArrivals'],
+        isNew: true,
+        featured: false,
+        description: 'Exoskeleton, armored glass, and unparalleled electric performance. The future of utility.',
+        images: ['P (14).jpg', 'P (14).jpg', 'P (14).jpg'],
+        specs: [
+          { label: 'Drivetrain', value: 'Tri-Motor AWD' },
+          { label: 'Output', value: '845 HP' }
+        ]
+      },
+      {
+        id: 'sl63-2024',
+        make: 'Mercedes-AMG',
+        model: 'SL 63 4MATIC+',
+        price: 145000000,
+        priceLabel: '145,000,000',
+        year: 2024,
+        mileage: '1,800 KM',
+        transmission: 'Automatic',
+        fuel: 'Petrol',
+        bodyType: 'Roadster',
+        tags: ['Mercedes-AMG', 'Luxury'],
+        isNew: false,
+        featured: false,
+        description: 'Iconic roadster with AMG performance, lightweight composite construction, and active aerodynamics.',
+        images: ['P (38).jpg', 'P (38).jpg', 'P (38).jpg'],
+        specs: [
+          { label: 'Engine', value: '4.0L V8 Biturbo' },
+          { label: 'Output', value: '577 HP' }
+        ]
+      },
+      {
+        id: 'cull-2023',
+        make: 'Rolls-Royce',
+        model: 'Cullinan SUV',
+        price: 550000000,
+        priceLabel: '550,000,000',
+        year: 2023,
+        mileage: '12,500 KM',
+        transmission: 'Automatic',
+        fuel: 'Petrol',
+        bodyType: 'SUV',
+        tags: ['Luxury', 'SUV', 'Rolls-Royce'],
+        isNew: false,
+        featured: false,
+        description: 'The ultimate luxury SUV. Handcrafted interior, all-terrain capability, and effortless elegance.',
+        images: ['P (18).jpg', 'P (18).jpg', 'P (18).jpg'],
+        specs: [
+          { label: 'Engine', value: '6.75L V12' },
+          { label: 'Output', value: '563 HP' }
+        ]
+      }
+    ];
+
+    // ── RENDER FUNCTIONS ──────────────────────────────────────────
+    const grid = document.getElementById('inventoryGrid');
+    const visibleCountEl = document.getElementById('visibleCount');
+    const noResultsEl = document.getElementById('noResults');
+    const loadMoreContainer = document.getElementById('loadMoreContainer');
+
+    const galleryState = {};
+
+    function renderVehicles(filteredVehicles) {
+      grid.innerHTML = '';
+      if (filteredVehicles.length === 0) {
+        noResultsEl.classList.add('visible');
+        loadMoreContainer.style.display = 'none';
+        visibleCountEl.textContent = '0';
+        return;
+      }
+      noResultsEl.classList.remove('visible');
+      loadMoreContainer.style.display = 'block';
+      visibleCountEl.textContent = filteredVehicles.length;
+
+      filteredVehicles.forEach(vehicle => {
+        if (!galleryState[vehicle.id]) {
+          galleryState[vehicle.id] = 0;
+        }
+        const activeIdx = galleryState[vehicle.id];
+
+        const card = document.createElement('div');
+        card.className = 'porsche-card group relative bg-neutral-950 rounded-2xl overflow-hidden border border-white/10 hover:border-porsche-accent/50 transition-all duration-500 flex flex-col justify-between shadow-2xl hover:shadow-[0_0_30px_rgba(0,102,255,0.15)]';
+        card.dataset.id = vehicle.id;
+
+        const thumbnailsHtml = vehicle.images.map((img, idx) => {
+          const isActive = idx === activeIdx;
+          return `<div class="gallery-thumb ${isActive ? 'active' : ''}" data-idx="${idx}" data-vehicle-id="${vehicle.id}">
+            <img src="${img}" alt="" onerror="this.style.display='none';this.parentElement.innerHTML='<span>${idx+1}</span>'" />
+          </div>`;
+        }).join('');
+
+        let badgeHtml = '';
+        if (vehicle.featured) {
+          badgeHtml = `<span class="bg-porsche-accent text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-black uppercase tracking-wider shadow-lg">Featured</span>`;
+        } else if (vehicle.isNew) {
+          badgeHtml = `<span class="bg-porsche-accent text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-black uppercase tracking-wider shadow-lg">New</span>`;
+        } else if (vehicle.tags.includes('Luxury')) {
+          badgeHtml = `<span class="bg-amber-500/80 text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-black uppercase tracking-wider shadow-lg">Luxury</span>`;
+        } else {
+          badgeHtml = `<span class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] font-bold uppercase tracking-wider">In Stock</span>`;
+        }
+
+        // Split price into currency and amount
+        const priceParts = vehicle.priceLabel.split(',');
+        const priceMain = priceParts[0];
+        const priceRest = priceParts.slice(1).join(',');
+
+        card.innerHTML = `
+          <div class="relative w-full overflow-hidden bg-black card-img-container" style="height: 380px;">
+            <img src="${vehicle.images[activeIdx]}" alt="${vehicle.make} ${vehicle.model}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-gradient-to-br from-porsche-black to-neutral-900\'><span class=\'text-4xl sm:text-6xl opacity-20\'>🏎️</span></div>'"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/10 to-black/30"></div>
+            <div class="absolute top-4 left-4 right-4 flex justify-between items-center z-10">
+              <span class="bg-black/60 backdrop-blur-md border border-white/10 text-white px-3 py-1 rounded-full text-[9px] font-mono uppercase tracking-widest">ID: ${vehicle.id.toUpperCase()}</span>
+              ${badgeHtml}
+            </div>
+            <div class="absolute bottom-4 left-4 right-4 z-20 flex items-center justify-between bg-black/60 backdrop-blur-md p-1.5 rounded-xl border border-white/10 opacity-90 group-hover:opacity-100 transition-opacity">
+              <span class="text-[9px] font-mono uppercase text-gray-400 pl-2 hidden sm:inline">Angles:</span>
+              <div class="gallery-thumbs">
+                ${thumbnailsHtml}
+              </div>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 -mt-4 relative z-20 flex-1 flex flex-col justify-between card-content">
+            <div>
+              <div class="flex flex-wrap justify-between items-baseline mb-2 gap-1">
+                <p class="make-label text-[11px] sm:text-xs uppercase">${vehicle.make}</p>
+                <p class="text-gray-500 text-[9px] sm:text-[10px] font-mono tracking-wider">${vehicle.mileage} • ${vehicle.transmission.toUpperCase()}</p>
+              </div>
+              <h3 class="model-name text-xl sm:text-2xl mb-3">${vehicle.model}</h3>
+              <div class="specs-grid mb-4">
+                ${vehicle.specs.map(spec => `
+                  <div class="spec-item">
+                    <span class="spec-label">${spec.label}</span>
+                    <span class="spec-value">${spec.value}</span>
+                  </div>
+                `).join('')}
+              </div>
+              <p class="car-description mb-4">${vehicle.description}</p>
+            </div>
+            <div class="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
+              <div class="flex flex-col">
+                <span class="text-gray-600 text-[8px] font-mono uppercase tracking-[0.15em] mb-1">Price</span>
+                <span class="price-display text-xl sm:text-2xl">
+                  <span class="price-currency">₦</span>${priceMain}${priceRest ? ',' + priceRest : ''}
+                </span>
+              </div>
+              <button class="inquire-btn text-white font-bold text-[10px] uppercase tracking-wider px-5 py-2.5 rounded-xl transition-all duration-300 transform active:scale-95 shadow-lg" data-vehicle-id="${vehicle.id}">Inquire</button>
+            </div>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+
+      // Gallery thumbnail click handlers
+      document.querySelectorAll('.gallery-thumb').forEach(thumb => {
+        thumb.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const vehicleId = this.dataset.vehicleId;
+          const idx = parseInt(this.dataset.idx);
+          galleryState[vehicleId] = idx;
+          const card = this.closest('.porsche-card');
+          const mainImg = card.querySelector('.card-img-container img');
+          const vehicle = vehicles.find(v => v.id === vehicleId);
+          if (mainImg && vehicle) {
+            mainImg.src = vehicle.images[idx];
+          }
+          const thumbContainer = this.parentElement;
+          thumbContainer.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+
+      // Inquire button handlers
+      document.querySelectorAll('.inquire-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const vehicleId = this.dataset.vehicleId;
+          alert(`Thank you for your interest in the vehicle (ID: ${vehicleId}). Our team will contact you shortly.`);
+        });
+      });
+    }
+
+    // ── FILTERING LOGIC ──────────────────────────────────────────
+    let currentFilter = 'all';
+    let currentSearch = '';
+
+    function getFilteredVehicles() {
+      let filtered = [...vehicles];
+
+      if (currentSearch.trim() !== '') {
+        const q = currentSearch.trim().toLowerCase();
+        filtered = filtered.filter(v =>
+          v.make.toLowerCase().includes(q) ||
+          v.model.toLowerCase().includes(q) ||
+          v.description.toLowerCase().includes(q) ||
+          v.tags.some(tag => tag.toLowerCase().includes(q))
+        );
+      }
+
+      if (currentFilter !== 'all') {
+        if (currentFilter === 'Under100M') {
+          filtered = filtered.filter(v => v.price < 100000000);
+        } else if (currentFilter === 'NewArrivals') {
+          filtered = filtered.filter(v => v.isNew === true);
+        } else {
+          filtered = filtered.filter(v =>
+            v.make === currentFilter ||
+            v.tags.includes(currentFilter) ||
+            v.fuel === currentFilter ||
+            v.bodyType === currentFilter
+          );
+        }
+      }
+
+      return filtered;
+    }
+
+    function applyFilters() {
+      const filtered = getFilteredVehicles();
+      renderVehicles(filtered);
+    }
+
+    // ── SEARCH EVENT ─────────────────────────────────────────────
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+
+    function handleSearch() {
+      currentSearch = searchInput.value;
+      applyFilters();
+    }
+
+    searchInput.addEventListener('input', handleSearch);
+    searchButton.addEventListener('click', handleSearch);
+
+    // ── FILTER CHIP EVENT ────────────────────────────────────────
+    document.querySelectorAll('.filter-chip').forEach(chip => {
+      chip.addEventListener('click', function() {
+        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+        currentFilter = this.dataset.filter;
+        applyFilters();
+      });
+    });
+
     // ── MOBILE MENU ──────────────────────────────────────────────
     const menuBtn = document.getElementById('menu-btn');
     const closeMenuBtn = document.getElementById('closeMenuBtn');
@@ -792,15 +1043,9 @@
       body.classList.remove('menu-open');
     }
 
-    if (menuBtn) {
-      menuBtn.addEventListener('click', openMenu);
-    }
-    if (closeMenuBtn) {
-      closeMenuBtn.addEventListener('click', closeMenu);
-    }
-    if (mobileOverlay) {
-      mobileOverlay.addEventListener('click', closeMenu);
-    }
+    if (menuBtn) menuBtn.addEventListener('click', openMenu);
+    if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+    if (mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
 
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
@@ -830,13 +1075,8 @@
       });
     });
 
-    // ── FILTER CHIP INTERACTION ─────────────────────────────────
-    document.querySelectorAll('.filter-chip').forEach(chip => {
-      chip.addEventListener('click', function() {
-        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-        this.classList.add('active');
-      });
-    });
+    // ── INITIAL RENDER ───────────────────────────────────────────
+    applyFilters();
   </script>
 
 </body>
